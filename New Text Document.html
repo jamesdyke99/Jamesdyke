@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Dyke Media</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Impact&display=swap');
+
+        /* General Body Styling */
+        body {
+            margin: 0;
+            font-family: 'Impact', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Background Image Wrapper */
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('Screenshot 2024-09-26 122134.png') no-repeat center center fixed;
+            background-size: cover;
+            z-index: -1;
+            transition: filter 0.2s ease-out; /* Smooth transition for blur */
+        }
+
+        /* Overlay to darken the background */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            z-index: 0;
+        }
+
+        /* Header Styling */
+        header {
+            position: absolute; /* Move to top of the page */
+            top: 20px; /* Add some space from the top */
+            left: 50%;
+            transform: translateX(-50%); /* Center align */
+        }
+
+        header h1 {
+            font-size: 100px; /* Increased size */
+            background: linear-gradient(90deg, #ffffff, #AABBC1); /* Gradient from white to #AABBC1 */
+            -webkit-background-clip: text;
+            color: transparent;
+            background-clip: text;
+            margin: 0;
+            z-index: 2; /* Ensures text appears above the overlay */
+        }
+
+        /* Section: My Latest Projects */
+        section {
+            padding: 100px 20px;
+            min-height: 100vh; /* Ensures section takes full height */
+            position: relative;
+            z-index: 2; /* Makes sure this section appears above the blurred background */
+            text-align: center; /* Center text */
+        }
+
+        section h2 {
+            font-size: 70px; /* Increased size */
+            background: linear-gradient(90deg, #ffffff, #AABBC1); /* Gradient from white to #AABBC1 */
+            -webkit-background-clip: text;
+            color: transparent;
+            background-clip: text;
+            margin-bottom: 50px;
+        }
+
+        /* About Me Section */
+        .about {
+            font-size: 35px; /* Increased size */
+            background: linear-gradient(90deg, #ffffff, #AABBC1); /* Gradient from white to #AABBC1 */
+            -webkit-background-clip: text;
+            color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+            z-index: 2; /* Ensure above the overlay */
+        }
+
+        /* About Me Heading */
+        .about-title {
+            font-size: 70px; /* Increased size */
+            background: linear-gradient(90deg, #ffffff, #AABBC1); /* Gradient from white to #AABBC1 */
+            -webkit-background-clip: text;
+            color: transparent;
+            background-clip: text;
+            margin: 50px 0 20px; /* Margin for spacing */
+        }
+
+        /* Contact Me Section */
+        .contact-title {
+            font-size: 35px; /* Same size as the about section */
+            background: linear-gradient(90deg, #ffffff, #AABBC1); /* Gradient from white to #AABBC1 */
+            -webkit-background-clip: text;
+            color: transparent;
+            background-clip: text;
+            margin: 40px 0; /* Increased margin to move down */
+            z-index: 2; /* Ensure above the overlay */
+        }
+
+        /* Email Styling */
+        .email {
+            color: white; /* Initial color is white */
+            cursor: pointer; /* Cursor changes to pointer */
+            text-decoration: none; /* No underline by default */
+            transition: color 0.3s; /* Smooth transition for color change */
+        }
+
+        .email:hover {
+            color: #72C9E6; /* Changes to the specified blue color on hover */
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        /* Embedding YouTube Videos Side by Side */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px; /* Space between about text and videos */
+        }
+
+        .youtube-embed {
+            width: 800px; /* Increased width */
+            height: 450px; /* Increased height */
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Image with Blur Effect -->
+    <div class="background-image" id="backgroundImage"></div>
+
+    <!-- Dark Overlay for the Blur Effect -->
+    <div class="overlay"></div>
+
+    <!-- Header -->
+    <header>
+        <h1>James Dyke Media</h1>
+    </header>
+
+    <!-- About Me Section -->
+    <section style="padding-top: 250px;"> <!-- Moved this section further down -->
+        <h2 class="about-title">About Me</h2>
+        <div class="about">
+            My name is James, I am striving to edit videos professionally for clients, or to get a job in a large scale editing job.<br>
+            I have been editing for over 5 years and have been paid for my services in the past.<br>
+            To see my latest work please scroll down.
+        </div>
+
+        <!-- Contact Me Section -->
+        <div class="contact-title">Contact Me</div>
+        <div class="about" onclick="copyEmail()">
+            <span class="email">jamesdyke99@gmail.com</span> <!-- Email styled -->
+        </div> <!-- Email clickable -->
+    </section>
+
+    <!-- Section: My Latest Projects -->
+    <section style="margin-top: 180px;"> <!-- Adjusted margin-top to move it up slightly -->
+        <h2>My Latest Projects</h2>
+
+        <!-- YouTube Video Embeds Side by Side -->
+        <div class="video-container">
+            <!-- First YouTube Embed -->
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/zl5QkJ1tcIo" allowfullscreen></iframe>
+
+            <!-- Second YouTube Embed -->
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/wTLT-_4oI8k" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript to increase blur as you scroll
+        window.addEventListener('scroll', function() {
+            var scrollY = window.scrollY;
+            var blurValue = Math.min(scrollY / 100, 10); // Max blur is set to 10px
+            document.getElementById('backgroundImage').style.filter = `blur(${blurValue}px)`;
+        });
+
+        // Function to copy email and open Gmail
+        function copyEmail() {
+            const email = "jamesdyke99@gmail.com";
+            navigator.clipboard.writeText(email).then(() => {
+                window.open('https://mail.google.com/mail/u/0/#inbox', '_blank'); // Opens Gmail
+            });
+        }
+    </script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
