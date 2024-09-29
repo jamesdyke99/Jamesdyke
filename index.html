@@ -178,6 +178,10 @@
                 font-size: 5vw; /* Responsive size for mobile */
             }
 
+            .email {
+                font-size: 4vw; /* Smaller size for email on mobile */
+            }
+
             .youtube-embed {
                 width: 100%; /* Full width for mobile */
                 height: 200px; /* Adjusted height for mobile */
@@ -238,7 +242,23 @@
             <iframe class="youtube-embed" src="https://www.youtube.com/embed/zl5QkJ1tcIo" allowfullscreen></iframe>
 
             <!-- Second YouTube Embed -->
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/wTLT-_4oI8k" allowfullscreen></
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/wTLT-_4oI8k" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const backgroundImage = document.getElementById('backgroundImage');
+            const scrollPosition = window.scrollY; // Get current scroll position
+            const blurAmount = Math.min(scrollPosition / 100, 10); // Limit the blur amount
+            backgroundImage.style.filter = `blur(${blurAmount}px)`; // Apply blur
+        });
+    </script>
+
+</body>
+</html>
+
+
 
 
 
