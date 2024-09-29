@@ -44,6 +44,7 @@
             top: 20px; /* Add some space from the top */
             left: 50%;
             transform: translateX(-50%); /* Center align */
+            text-align: center; /* Center text */
         }
 
         header h1 {
@@ -54,6 +55,11 @@
             background-clip: text;
             margin: 0;
             z-index: 2; /* Ensures text appears above the overlay */
+            transition: color 0.3s; /* Smooth transition for color change */
+        }
+
+        header h1:hover {
+            color: transparent; /* Prevent gray color on hover */
         }
 
         /* Section: My Latest Projects */
@@ -112,6 +118,7 @@
             cursor: pointer; /* Cursor changes to pointer */
             text-decoration: none; /* No underline by default */
             transition: color 0.3s; /* Smooth transition for color change */
+            font-size: 35px; /* Same size as the contact title */
         }
 
         .email:hover {
@@ -135,18 +142,40 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
 
+        /* Coming Soon Section */
+        .coming-soon {
+            margin: 10px 0; /* Reduced margin for the section */
+            text-align: center; /* Center text */
+        }
+
+        .coming-soon-title {
+            font-size: 70px; /* Title size */
+            background: linear-gradient(90deg, #ffffff, #AABBC1); /* Gradient from white to #AABBC1 */
+            -webkit-background-clip: text;
+            color: transparent;
+            background-clip: text;
+            margin-bottom: 20px; /* Space below title */
+        }
+
+        /* Arrow Down Styling */
+        .arrow-down {
+            font-size: 50px; /* Size of the arrow */
+            color: white; /* Arrow color */
+            margin: 20px 0; /* Spacing above and below the arrow */
+        }
+
         /* Media Queries for Mobile Responsiveness */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 50px; /* Adjusted size for mobile */
+                font-size: 8vw; /* Responsive size for mobile */
             }
 
             section h2 {
-                font-size: 40px; /* Adjusted size for mobile */
+                font-size: 6vw; /* Responsive size for mobile */
             }
 
             .about, .contact-title {
-                font-size: 25px; /* Adjusted size for mobile */
+                font-size: 5vw; /* Responsive size for mobile */
             }
 
             .youtube-embed {
@@ -185,13 +214,22 @@
 
         <!-- Contact Me Section -->
         <div class="contact-title">Contact Me</div>
-        <div class="about" onclick="copyEmail()">
-            <span class="email">jamesdyke99@gmail.com</span> <!-- Email styled -->
+        <div class="about">
+            <a href="mailto:jamesdyke99@gmail.com" class="email">jamesdyke99@gmail.com</a> <!-- Email styled as a link -->
         </div> <!-- Email clickable -->
+
+        <!-- Down Arrow -->
+        <div class="arrow-down">↓</div> <!-- Arrow added here -->
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-soon">
+        <h2 class="coming-soon-title">Coming Soon</h2>
+        <img src="Screenshot 2024-09-29 163129.png" alt="Coming Soon" style="max-width: 100%; height: auto; border-radius: 10px;"> <!-- Responsive image -->
     </section>
 
     <!-- Section: My Latest Projects -->
-    <section style="margin-top: 180px;"> <!-- Adjusted margin-top to move it up slightly -->
+    <section style="margin-top: 50px;"> <!-- Further reduced margin-top to move it up slightly -->
         <h2>My Latest Projects</h2>
 
         <!-- YouTube Video Embeds Side by Side -->
@@ -200,29 +238,16 @@
             <iframe class="youtube-embed" src="https://www.youtube.com/embed/zl5QkJ1tcIo" allowfullscreen></iframe>
 
             <!-- Second YouTube Embed -->
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/wTLT-_4oI8k" allowfullscreen></iframe>
-        </div>
-    </section>
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/wTLT-_4oI8k" allowfullscreen></
 
-    <script>
-        // JavaScript to increase blur as you scroll
-        window.addEventListener('scroll', function() {
-            var scrollY = window.scrollY;
-            var blurValue = Math.min(scrollY / 100, 10); // Max blur is set to 10px
-            document.getElementById('backgroundImage').style.filter = `blur(${blurValue}px)`;
-        });
 
-        // Function to copy email and open Gmail
-        function copyEmail() {
-            const email = "jamesdyke99@gmail.com";
-            navigator.clipboard.writeText(email).then(() => {
-                window.open('https://mail.google.com/mail/u/0/#inbox', '_blank'); // Opens Gmail
-            });
-        }
-    </script>
-    
-</body>
-</html>
+
+
+
+
+
+
+
 
 
 
