@@ -40,156 +40,135 @@
 
         /* Header Styling */
         header {
-            position: absolute; /* Move to top of the page */
-            top: 20px; /* Add some space from the top */
+            position: absolute;
+            top: 20px;
             left: 50%;
-            transform: translateX(-50%); /* Center align */
-            text-align: center; /* Center text */
+            transform: translateX(-50%);
+            text-align: center;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 1s ease-in-out; /* Smooth transition for fade-in */
+        }
+
+        header.visible {
+            opacity: 1; /* Fully visible when class is added */
         }
 
         header h1 {
-            font-size: 100px; /* Increased size */
-            background: linear-gradient(90deg, #ffffff, #AABBC1); /* Gradient from white to #AABBC1 */
+            font-size: 100px;
+            background: linear-gradient(90deg, #ffffff, #AABBC1);
             -webkit-background-clip: text;
             color: transparent;
             background-clip: text;
             margin: 0;
-            z-index: 2; /* Ensures text appears above the overlay */
-            transition: color 0.3s; /* Smooth transition for color change */
+            z-index: 2;
+            transition: color 0.3s;
         }
 
         header h1:hover {
-            color: transparent; /* Prevent gray color on hover */
+            color: transparent;
         }
 
-        /* Section: My Latest Projects */
+        /* Section Styling */
         section {
             padding: 100px 20px;
-            min-height: 100vh; /* Ensures section takes full height */
+            min-height: 100vh;
             position: relative;
-            z-index: 2; /* Makes sure this section appears above the blurred background */
-            text-align: center; /* Center text */
+            z-index: 2;
+            text-align: center;
+        }
+
+        /* About Me Section Fade-In */
+        .about-section {
+            opacity: 0; /* Initially hidden */
+            transition: opacity 1s ease-in-out; /* Smooth transition */
+        }
+
+        .about-section.visible {
+            opacity: 1; /* Visible when scrolled to */
         }
 
         section h2 {
-            font-size: 70px; /* Increased size */
-            background: linear-gradient(90deg, #ffffff, #AABBC1); /* Gradient from white to #AABBC1 */
+            font-size: 70px;
+            background: linear-gradient(90deg, #ffffff, #AABBC1);
             -webkit-background-clip: text;
             color: transparent;
             background-clip: text;
             margin-bottom: 50px;
         }
 
-        /* About Me Section */
         .about {
-            font-size: 35px; /* Increased size */
-            background: linear-gradient(90deg, #ffffff, #AABBC1); /* Gradient from white to #AABBC1 */
+            font-size: 35px;
+            background: linear-gradient(90deg, #ffffff, #AABBC1);
             -webkit-background-clip: text;
             color: transparent;
             background-clip: text;
             margin: 20px 0;
-            z-index: 2; /* Ensure above the overlay */
-        }
-
-        /* About Me Heading */
-        .about-title {
-            font-size: 70px; /* Increased size */
-            background: linear-gradient(90deg, #ffffff, #AABBC1); /* Gradient from white to #AABBC1 */
-            -webkit-background-clip: text;
-            color: transparent;
-            background-clip: text;
-            margin: 50px 0 20px; /* Margin for spacing */
+            z-index: 2;
         }
 
         /* Contact Me Section */
         .contact-title {
-            font-size: 35px; /* Same size as the about section */
-            background: linear-gradient(90deg, #ffffff, #AABBC1); /* Gradient from white to #AABBC1 */
+            font-size: 35px;
+            background: linear-gradient(90deg, #ffffff, #AABBC1);
             -webkit-background-clip: text;
             color: transparent;
             background-clip: text;
-            margin: 40px 0; /* Increased margin to move down */
-            z-index: 2; /* Ensure above the overlay */
+            margin: 40px 0;
+            z-index: 2;
         }
 
         /* Email Styling */
         .email {
-            color: white; /* Initial color is white */
-            cursor: pointer; /* Cursor changes to pointer */
-            text-decoration: none; /* No underline by default */
-            transition: color 0.3s; /* Smooth transition for color change */
-            font-size: 35px; /* Same size as the contact title */
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 35px;
         }
 
         .email:hover {
-            color: #72C9E6; /* Changes to the specified blue color on hover */
-            text-decoration: underline; /* Underline on hover */
-        }
-
-        /* Embedding YouTube Videos Side by Side */
-        .video-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px; /* Space between about text and videos */
-        }
-
-        .youtube-embed {
-            width: 800px; /* Increased width */
-            height: 450px; /* Increased height */
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            color: #72C9E6;
+            text-decoration: underline;
         }
 
         /* Coming Soon Section */
         .coming-soon {
-            margin: 10px 0; /* Reduced margin for the section */
-            text-align: center; /* Center text */
+            margin: 10px 0;
+            text-align: center;
         }
 
         .coming-soon-title {
-            font-size: 70px; /* Title size */
-            background: linear-gradient(90deg, #ffffff, #AABBC1); /* Gradient from white to #AABBC1 */
+            font-size: 70px;
+            background: linear-gradient(90deg, #ffffff, #AABBC1);
             -webkit-background-clip: text;
             color: transparent;
             background-clip: text;
-            margin-bottom: 20px; /* Space below title */
+            margin-bottom: 20px;
         }
 
         /* Arrow Down Styling */
         .arrow-down {
-            font-size: 50px; /* Size of the arrow */
-            color: white; /* Arrow color */
-            margin: 20px 0; /* Spacing above and below the arrow */
+            font-size: 50px;
+            color: white;
+            margin: 20px 0;
         }
 
         /* Media Queries for Mobile Responsiveness */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 8vw; /* Responsive size for mobile */
+                font-size: 8vw;
             }
 
             section h2 {
-                font-size: 6vw; /* Responsive size for mobile */
+                font-size: 6vw;
             }
 
             .about, .contact-title {
-                font-size: 5vw; /* Responsive size for mobile */
+                font-size: 5vw;
             }
 
             .email {
-                font-size: 4vw; /* Smaller size for email on mobile */
-            }
-
-            .youtube-embed {
-                width: 100%; /* Full width for mobile */
-                height: 200px; /* Adjusted height for mobile */
-            }
-
-            .video-container {
-                flex-direction: column; /* Stack videos on mobile */
-                align-items: center; /* Center align on mobile */
+                font-size: 4vw;
             }
         }
     </style>
@@ -203,12 +182,12 @@
     <div class="overlay"></div>
 
     <!-- Header -->
-    <header>
+    <header id="header">
         <h1>James Dyke Media</h1>
     </header>
 
     <!-- About Me Section -->
-    <section style="padding-top: 250px;"> <!-- Moved this section further down -->
+    <section class="about-section" id="aboutSection" style="padding-top: 250px;">
         <h2 class="about-title">About Me</h2>
         <div class="about">
             My name is James, I am striving to edit videos professionally for clients, or to get a job in a large scale editing job.<br>
@@ -219,44 +198,56 @@
         <!-- Contact Me Section -->
         <div class="contact-title">Contact Me</div>
         <div class="about">
-            <a href="mailto:jamesdyke99@gmail.com" class="email">jamesdyke99@gmail.com</a> <!-- Email styled as a link -->
-        </div> <!-- Email clickable -->
+            <a href="mailto:jamesdyke99@gmail.com" class="email">jamesdyke99@gmail.com</a>
+        </div>
 
         <!-- Down Arrow -->
-        <div class="arrow-down">↓</div> <!-- Arrow added here -->
+        <div class="arrow-down">↓</div>
     </section>
 
     <!-- Coming Soon Section -->
     <section class="coming-soon">
         <h2 class="coming-soon-title">Coming Soon</h2>
-        <img src="Screenshot 2024-09-29 163129.png" alt="Coming Soon" style="max-width: 100%; height: auto; border-radius: 10px;"> <!-- Responsive image -->
-    </section>
-
-    <!-- Section: My Latest Projects -->
-    <section style="margin-top: 50px;"> <!-- Further reduced margin-top to move it up slightly -->
-        <h2>My Latest Projects</h2>
-
-        <!-- YouTube Video Embeds Side by Side -->
-        <div class="video-container">
-            <!-- First YouTube Embed -->
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/zl5QkJ1tcIo" allowfullscreen></iframe>
-
-            <!-- Second YouTube Embed -->
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/wTLT-_4oI8k" allowfullscreen></iframe>
-        </div>
+        <img src="Screenshot 2024-09-29 163129.png" alt="Coming Soon" style="max-width: 100%; height: auto; border-radius: 10px;">
     </section>
 
     <script>
+        // Background Blur on Scroll
         window.addEventListener('scroll', function() {
             const backgroundImage = document.getElementById('backgroundImage');
-            const scrollPosition = window.scrollY; // Get current scroll position
-            const blurAmount = Math.min(scrollPosition / 100, 10); // Limit the blur amount
-            backgroundImage.style.filter = `blur(${blurAmount}px)`; // Apply blur
+            const scrollPosition = window.scrollY;
+            const blurAmount = Math.min(scrollPosition / 100, 10);
+            backgroundImage.style.filter = `blur(${blurAmount}px)`;
+
+            // Header Fade-In on Scroll to Top
+            const header = document.getElementById('header');
+            if (scrollPosition <= 50) {
+                header.classList.add('visible');
+            } else {
+                header.classList.remove('visible');
+            }
+
+            // About Section Fade-In on Scroll
+            const aboutSection = document.getElementById('aboutSection');
+            const aboutSectionTop = aboutSection.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (aboutSectionTop < windowHeight * 0.8) {
+                aboutSection.classList.add('visible');
+            }
+        });
+
+        // Initial Fade-In Animation for Header on Page Load
+        window.addEventListener('load', function() {
+            const header = document.getElementById('header');
+            header.classList.add('visible');
         });
     </script>
 
 </body>
 </html>
+
+
 
 
 
