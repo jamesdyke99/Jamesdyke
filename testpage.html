@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title>Earlier Projects</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Impact&display=swap');
 
@@ -12,19 +12,6 @@
             margin: 0;
             font-family: 'Impact', sans-serif;
             overflow-x: hidden;
-            opacity: 0; /* Initially hidden */
-            background-color: black; /* Page starts with black background */
-            animation: fadeIn 2s ease-out forwards; /* 2s fade-in animation */
-        }
-
-        /* Fade-in animation */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
         }
 
         /* Background Image Wrapper */
@@ -34,10 +21,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('Screenshot 2024-09-26 122134.png') no-repeat center center fixed;
+            background: url('tree.png') no-repeat center center fixed; /* Changed background to tree.png */
             background-size: cover;
             z-index: -1;
-            transition: filter 0.2s ease-out; /* Smooth transition for blur */
+            transition: filter 0.2s ease-out;
         }
 
         /* Overlay to darken the background */
@@ -58,12 +45,12 @@
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
-            opacity: 0; /* Initially hidden */
-            transition: opacity 1s ease-in-out; /* Smooth transition for fade-in */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
 
         header.visible {
-            opacity: 1; /* Fully visible when class is added */
+            opacity: 1;
         }
 
         header h1 {
@@ -77,96 +64,38 @@
             transition: color 0.3s;
         }
 
+        /* Back Arrow Styling */
+        .back-arrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+            z-index: 3;
+            text-decoration: none;
+        }
+
+        .back-arrow:hover {
+            color: #72C9E6;
+        }
+
         /* Section Styling */
         section {
-            padding: 100px 20px;
+            padding: 150px 20px 50px 20px; /* Add padding to avoid overlapping with the header */
             min-height: 100vh;
             position: relative;
             z-index: 2;
             text-align: center;
-            opacity: 0; /* Initially hidden */
-            transition: opacity 1s ease-in-out; /* Smooth fade-in */
         }
 
-        section.visible {
-            opacity: 1; /* Make section visible */
-        }
-
-        /* About Me Section Fade-In */
-        .about-section {
-            opacity: 0; /* Initially hidden */
-            transition: opacity 1s ease-in-out; /* Smooth transition */
-        }
-
-        .about-section.visible {
-            opacity: 1; /* Visible when scrolled to */
-        }
-
-        section h2 {
-            font-size: 70px;
-            background: linear-gradient(90deg, #ffffff, #AABBC1);
-            -webkit-background-clip: text;
-            color: transparent;
-            background-clip: text;
-            margin-bottom: 50px;
-        }
-
-        .about {
-            font-size: 35px;
-            background: linear-gradient(90deg, #ffffff, #AABBC1);
-            -webkit-background-clip: text;
-            color: transparent;
-            background-clip: text;
-            margin: 20px 0;
-            z-index: 2;
-        }
-
-        /* Contact Me Section */
-        .contact-title {
-            font-size: 35px;
-            background: linear-gradient(90deg, #ffffff, #AABBC1);
-            -webkit-background-clip: text;
-            color: transparent;
-            background-clip: text;
-            margin: 40px 0;
-            z-index: 2;
-        }
-
-        /* Email Styling */
-        .email {
-            color: white;
-            cursor: pointer;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 35px;
-        }
-
-        .email:hover {
-            color: #72C9E6;
-            text-decoration: underline;
-        }
-
-        /* Coming Soon Section */
-        .coming-soon {
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        .coming-soon-title {
-            font-size: 70px;
-            background: linear-gradient(90deg, #ffffff, #AABBC1);
-            -webkit-background-clip: text;
-            color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-        }
-
-        /* Video Container */
+        /* Embedding YouTube Videos Side by Side */
         .video-container {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin-top: 30px;
+            flex-wrap: wrap; /* Allow wrap for more than 2 videos */
         }
 
         .youtube-embed {
@@ -177,29 +106,10 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
 
-        /* Arrow Down Styling */
-        .arrow-down {
-            font-size: 50px;
-            color: white;
-            margin: 20px 0;
-        }
-
         /* Media Queries for Mobile Responsiveness */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 8vw;
-            }
-
-            section h2 {
-                font-size: 6vw;
-            }
-
-            .about, .contact-title {
-                font-size: 5vw;
-            }
-
-            .email {
-                font-size: 4vw;
             }
 
             .youtube-embed {
@@ -222,40 +132,29 @@
     <!-- Dark Overlay for the Blur Effect -->
     <div class="overlay"></div>
 
+    <!-- Back Arrow -->
+    <a href="https://www.jamesdyke.co.uk" class="back-arrow">←</a>
+
     <!-- Header -->
     <header id="header">
-        <h1>Test</h1>
+        <h1>Earlier Projects</h1>
     </header>
 
-    <!-- About Me Section -->
-    <section class="about-section" id="aboutSection" style="padding-top: 250px;">
-        <h2 class="about-title">Test</h2>
-        <div class="about">Test</div>
-
-        <!-- Contact Me Section -->
-        <div class="contact-title">Test</div>
-        <div class="about">
-            <a href="mailto:test@test.com" class="email">test@test.com</a>
-        </div>
-
-        <!-- Down Arrow -->
-        <div class="arrow-down">↓</div>
-    </section>
-
-    <!-- Coming Soon Section -->
-    <section class="coming-soon">
-        <h2 class="coming-soon-title">Test</h2>
-        <img src="Screenshot 2024-09-29 163129.png" alt="Coming Soon" style="max-width: 100%; height: auto; border-radius: 10px;">
-    </section>
-
-    <!-- My Latest Projects Section -->
-    <section style="margin-top: 50px;">
-        <h2>Test</h2>
-
-        <!-- YouTube Video Embeds -->
+    <!-- Section for YouTube Video Embeds -->
+    <section>
         <div class="video-container">
+            <!-- First YouTube Embed -->
             <iframe class="youtube-embed" src="https://www.youtube.com/embed/zl5QkJ1tcIo" allowfullscreen></iframe>
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/wTLT-_4oI8k" allowfullscreen></iframe>
+
+            <!-- Second YouTube Embed -->
+            <iframe class="youtube-embed"
+            src="https://www.youtube.com/embed/wTLT-_4oI8k" allowfullscreen></iframe>
+
+            <!-- Third YouTube Embed -->
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/leGD7leoVZg" allowfullscreen></iframe>
+
+            <!-- Fourth YouTube Embed -->
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/7sMfB3WjCwA?start=14" allowfullscreen></iframe>
         </div>
     </section>
 
@@ -274,16 +173,63 @@
             } else {
                 header.classList.remove('visible');
             }
+        });
 
-            // About Section Fade-In on Scroll
-            const aboutSection = document.getElementById('aboutSection');
-            const aboutSectionPosition = aboutSection.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            if (aboutSectionPosition < windowHeight - 100) {
-                aboutSection.classList.add('visible');
-            }
+        // Initial Fade-In Animation for Header on Page Load
+        window.addEventListener('load', function() {
+            const header = document.getElementById('header');
+            header.classList.add('visible');
         });
     </script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
