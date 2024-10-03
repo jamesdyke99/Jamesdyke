@@ -13,6 +13,7 @@
             color: #333;
             text-align: center;
             overflow-x: hidden; /* Prevent horizontal scrolling */
+            cursor: pointer; /* Change cursor to indicate click action */
         }
         header {
             background-color: #ff69b4; /* Hot pink */
@@ -77,13 +78,13 @@
         }
     </style>
 </head>
-<body>
+<body onclick="playAudio()">
     <header>
         <h1>Kim Woodburn Fan Page</h1>
     </header>
 
-    <!-- Audio element to play the background music with autoplay and loop -->
-    <audio autoplay loop>
+    <!-- Audio element to play the background music -->
+    <audio id="background-audio" loop>
         <source src="rasputin.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -129,8 +130,21 @@
     <footer>
         <p>© 2024 Kim Woodburn Fan Club</p>
     </footer>
+
+    <script>
+        // Function to play audio on click
+        function playAudio() {
+            var audio = document.getElementById('background-audio');
+            audio.play().catch(function(error) {
+                console.log('Audio play failed:', error);
+            });
+        }
+    </script>
 </body>
 </html>
+
+
+
 
 >
 
