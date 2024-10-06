@@ -152,6 +152,36 @@
             margin: 20px 0;
         }
 
+        /* Styling for Best Photos */
+        .photos-section img {
+            width: 100%;
+            height: auto;
+            max-width: 800px; /* Same width as the 'Coming Soon' image */
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            cursor: pointer; /* Indicates clickable images */
+        }
+
+        /* Gear Section Styling */
+        .gear-section {
+            font-size: 30px;
+            color: white;
+            text-align: center;
+            line-height: 1.6;
+            margin-top: 0; /* Removes extra margin between sections */
+        }
+
+        /* Footer Styling */
+        footer {
+            margin-top: 50px;
+            font-size: 20px;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark background for footer */
+        }
+
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             header h1 {
@@ -178,6 +208,14 @@
             .video-container {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .gear-section {
+                font-size: 4vw;
+            }
+
+            footer {
+                font-size: 3vw;
             }
         }
     </style>
@@ -219,7 +257,7 @@
     </section>
 
     <!-- My Latest Projects Section -->
-    <section style="margin-top: 50px;">
+    <section style="margin-top: 30px;"> <!-- Reduced margin-top here -->
         <h2>My Latest Projects</h2>
 
         <div class="video-container">
@@ -228,10 +266,32 @@
         </div>
 
         <!-- See More Link -->
-        <div class="about" style="margin-top: 30px;">
+        <div class="about" style="margin-top: 20px;"> <!-- Reduced margin-top here -->
             <a href="https://www.jamesdyke.co.uk/testpage.html" class="see-more">See more</a>
         </div>
     </section>
+
+    <!-- My Best Photos Section -->
+    <section class="photos-section" style="margin-top: 30px;"> <!-- Reduced margin-top here -->
+        <h2>My Best Photos</h2>
+        <img src="photo1.jpg" alt="Photo 1">
+        <img src="photo2.jpg" alt="Photo 2">
+        <img src="photo3.jpg" alt="Photo 3">
+        <img src="photo4.jpg" alt="Photo 4">
+    </section>
+
+    <!-- Gear I Use Section -->
+    <section class="gear-section">
+        <h2>Gear I Use</h2>
+        Main Camera: Fujifilm XT3<br>
+        Drone: DJI Mini 2<br>
+        Editing software: Premiere Pro
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        All rights reserved jamesdyke.co.uk 2024
+    </footer>
 
     <script>
         // Background Blur on Scroll
@@ -255,10 +315,46 @@
             const header = document.getElementById('header');
             header.classList.add('visible');
         });
+
+        // Fullscreen for Photos
+        const photos = document.querySelectorAll('.photos-section img');
+
+        photos.forEach(photo => {
+            photo.addEventListener('click', () => {
+                if (photo.requestFullscreen) {
+                    photo.requestFullscreen();
+                } else if (photo.mozRequestFullScreen) { /* Firefox */
+                    photo.mozRequestFullScreen();
+                } else if (photo.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                    photo.webkitRequestFullscreen();
+                } else if (photo.msRequestFullscreen) { /* IE/Edge */
+                    photo.msRequestFullscreen();
+                }
+            });
+        });
     </script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+>
+
+
+
+
+
+
+
 
 
 
