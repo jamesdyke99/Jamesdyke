@@ -122,6 +122,7 @@
             justify-content: center;
             gap: 20px;
             margin-top: 30px;
+            flex-wrap: wrap;
         }
 
         .youtube-embed {
@@ -237,9 +238,12 @@
     <section style="padding-top: 250px;">
         <h2 class="about-title">About Me</h2>
         <div class="about">
-            My name is James, I am striving to edit videos professionally for clients, or to get a job in a large scale editing job.<br>
-            I have been editing for over 5 years and have been paid for my services in the past.<br>
-            To see my latest work please scroll down.
+            My name is James, I make cinematic short films of different locations and use my editing skills I have learned over the years to create a impactful feeling video. 
+            I have over 5 years of experience editing videos and films.
+            I also enjoy Metalworking and Woodworking along side my film making.
+             I have plans in the works to make films about the projects I make at these classes and am in the process of editing a video about metalwork/blacksmithing.
+            I have very high standards for my projects which means that I am not satisfied with them until they are as perfect as I can get them. 
+            for examples of my latest work please scroll down.
         </div>
 
         <!-- Contact Me Section -->
@@ -257,7 +261,7 @@
     </section>
 
     <!-- My Latest Projects Section -->
-    <section style="margin-top: 30px;"> <!-- Reduced margin-top here -->
+    <section style="margin-top: 30px;"> 
         <h2>My Latest Projects</h2>
 
         <div class="video-container">
@@ -266,13 +270,24 @@
         </div>
 
         <!-- See More Link -->
-        <div class="about" style="margin-top: 20px;"> <!-- Reduced margin-top here -->
+        <div class="about" style="margin-top: 20px;"> 
             <a href="https://www.jamesdyke.co.uk/testpage.html" class="see-more">See more</a>
         </div>
     </section>
 
+    <!-- Blender and 3D Modelling Work Section -->
+    <section style="margin-top: 30px;"> 
+        <h2>Blender and 3D Modelling Work</h2>
+        
+        <div class="video-container">
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/yVXqHosyloU" allowfullscreen></iframe>
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/XQ8hTK7f5ko" allowfullscreen></iframe>
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/w_8risEbGCA" allowfullscreen></iframe>
+        </div>
+    </section>
+
     <!-- My Best Photos Section -->
-    <section class="photos-section" style="margin-top: 30px;"> <!-- Reduced margin-top here -->
+    <section class="photos-section">
         <h2>My Best Photos</h2>
         <img src="photo1.jpg" alt="Photo 1">
         <img src="photo2.jpg" alt="Photo 2">
@@ -285,7 +300,8 @@
         <h2>Gear I Use</h2>
         Main Camera: Fujifilm XT3<br>
         Drone: DJI Mini 2<br>
-        Editing software: Premiere Pro
+        Editing software: Premiere Pro<br>
+        Photo editing software: Lightroom
     </section>
 
     <!-- Footer -->
@@ -298,7 +314,7 @@
         window.addEventListener('scroll', function() {
             const backgroundImage = document.getElementById('backgroundImage');
             const scrollPosition = window.scrollY;
-            const blurAmount = Math.min(scrollPosition / 100, 10);
+            const blurAmount = Math.min(scrollPosition / 100, 10); // Adjust the divisor for blur sensitivity
             backgroundImage.style.filter = `blur(${blurAmount}px)`;
 
             // Header Fade-In on Scroll to Top
@@ -336,15 +352,6 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
 >
