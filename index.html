@@ -24,7 +24,7 @@
             background: url('Screenshot 2024-09-26 122134.png') no-repeat center center fixed;
             background-size: cover;
             z-index: -1;
-            transition: filter 0.2s ease-out; /* Smooth transition for blur */
+            transition: filter 0.2s ease-out;
         }
 
         /* Overlay to darken the background */
@@ -34,7 +34,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            background-color: rgba(0, 0, 0, 0.5);
             z-index: 0;
         }
 
@@ -54,7 +54,7 @@
         }
 
         header h1 {
-            font-size: 100px;
+            font-size: 8vw; /* Default for mobile */
             background: linear-gradient(90deg, #ffffff, #AABBC1);
             -webkit-background-clip: text;
             color: transparent;
@@ -78,7 +78,7 @@
         }
 
         section h2 {
-            font-size: 70px;
+            font-size: 7vw; /* Default for mobile */
             background: linear-gradient(90deg, #ffffff, #AABBC1);
             -webkit-background-clip: text;
             color: transparent;
@@ -86,20 +86,29 @@
             margin-bottom: 50px;
         }
 
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6); /* Subtle background for better readability */
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
         .about {
-            font-size: 35px;
+            font-size: 5vw; /* Default for mobile */
             background: linear-gradient(90deg, #ffffff, #AABBC1);
             -webkit-background-clip: text;
             color: transparent;
             background-clip: text;
             margin: 20px 0;
-            z-index: 2;
+            line-height: 1.5;
         }
 
         /* Contact Me and Email Styling */
         .contact-title {
-            font-size: 50px; /* Increased size */
-            color: white; /* White text */
+            font-size: 6vw; /* Default for mobile */
+            color: white;
             margin: 40px 0;
         }
 
@@ -108,7 +117,7 @@
             cursor: pointer;
             text-decoration: none;
             transition: color 0.3s;
-            font-size: 35px;
+            font-size: 5vw; /* Default for mobile */
         }
 
         .email:hover, .see-more:hover {
@@ -126,90 +135,120 @@
         }
 
         .youtube-embed {
-            width: 800px;
-            height: 450px;
+            width: 100%;
+            height: auto;
+            max-width: 800px; /* Restrict max size on larger screens */
+            aspect-ratio: 16 / 9;
             border: none;
             border-radius: 20px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
 
+        /* Arrow Down Styling */
         .arrow-down {
             font-size: 50px;
             color: white;
             margin: 20px 0;
         }
 
-        /* Styling for Best Photos */
+        /* Photos Section Styling */
         .photos-section img {
             width: 100%;
             height: auto;
-            max-width: 800px; /* Same width as the 'Coming Soon' image */
+            max-width: 800px; /* Restrict max size on larger screens */
             margin: 20px 0;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            cursor: pointer; /* Indicates clickable images */
+            cursor: pointer;
         }
 
         /* Gear Section Styling */
         .gear-section {
-            font-size: 30px;
+            font-size: 5vw; /* Default for mobile */
             color: white;
             text-align: center;
             line-height: 1.6;
-            margin-top: 0; /* Removes extra margin between sections */
+            margin-top: 0;
         }
 
         /* Footer Styling */
         footer {
             margin-top: 50px;
-            font-size: 20px;
+            font-size: 4vw;
             color: white;
             text-align: center;
             padding: 20px 0;
-            background-color: rgba(0, 0, 0, 0.7); /* Dark background for footer */
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Desktop Responsiveness: Larger text size for larger screens */
+        @media (min-width: 1024px) {
+            header h1 {
+                font-size: 64px; /* Larger for PC */
+            }
+
+            section h2 {
+                font-size: 48px; /* Larger for PC */
+            }
+
+            .about {
+                font-size: 28px; /* Larger for PC */
+            }
+
+            .contact-title {
+                font-size: 32px; /* Larger for PC */
+            }
+
+            .email, .see-more {
+                font-size: 24px; /* Larger for PC */
+            }
+
+            .gear-section {
+                font-size: 24px; /* Larger for PC */
+            }
+
+            footer {
+                font-size: 20px; /* Larger for PC */
+            }
+
+            .arrow-down {
+                font-size: 40px; /* Larger for PC */
+            }
         }
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 8vw;
+                font-size: 10vw; /* Larger header for smaller screens */
             }
 
             section h2 {
-                font-size: 6vw;
+                font-size: 8vw;
             }
 
             .about, .contact-title {
-                font-size: 5vw;
+                font-size: 6vw;
             }
 
             .email, .see-more {
-                font-size: 4vw;
-            }
-
-            .youtube-embed {
-                width: 100%;
-                height: 200px;
-            }
-
-            .video-container {
-                flex-direction: column;
-                align-items: center;
+                font-size: 5vw;
             }
 
             .gear-section {
-                font-size: 4vw;
+                font-size: 5vw;
             }
 
-            footer {
-                font-size: 3vw;
+            .arrow-down {
+                font-size: 7vw;
             }
         }
 
-        /* My Latest Video Embed */
+        /* Latest Video Embed */
         .latest-video-embed {
-            width: 1920px; /* Updated width */
-            height: 1080px; /* Updated height */
+            width: 100%;
+            height: auto;
+            max-width: 1920px;
+            aspect-ratio: 16 / 9;
             border: none;
             border-radius: 20px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -231,14 +270,14 @@
 
     <!-- About Me Section -->
     <section style="padding-top: 250px;">
-        <h2 class="about-title">About Me</h2>
-        <div class="about">
-            My name is James, I make cinematic short films of different locations and use my editing skills I have learned over the years to create a impactful feeling video. 
-            I have over 5 years of experience editing videos and films.
-            I also enjoy Metalworking and Woodworking along side my film making.
-            I have plans in the works to make films about the projects I make at these classes and am in the process of editing a video about metalwork/blacksmithing.
-            I have very high standards for my projects which means that I am not satisfied with them until they are as perfect as I can get them. 
-            For examples of my latest work, please scroll down.
+        <h2>About Me</h2>
+        <div class="about-container">
+            <div class="about">
+                My name is James, I make cinematic short films of different locations and use my editing skills I have learned over the years to create impactful videos. I have over 5 years of experience editing videos and films. 
+            </div>
+            <div class="about">
+                I also enjoy Metalworking and Woodworking alongside my filmmaking. Combining creativity with technical skills allows me to produce unique content that tells compelling visual stories.
+            </div>
         </div>
 
         <!-- Contact Me Section -->
@@ -249,31 +288,15 @@
         <div class="arrow-down">↓</div>
     </section>
 
-    <!-- Latest Video Section (Replaces 'Coming Soon') -->
+    <!-- Latest Video Section -->
     <section class="latest-video-section">
         <h2>Latest Video</h2>
         <iframe class="latest-video-embed" src="https://www.youtube.com/embed/fSWmNVgQ0TA?start=56" allowfullscreen></iframe>
     </section>
 
     <!-- My Latest Projects Section -->
-    <section style="margin-top: 30px;"> 
+    <section>
         <h2>My Latest Projects</h2>
-
-        <div class="video-container">
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/zl5QkJ1tcIo" allowfullscreen></iframe>
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/wTLT-_4oI8k" allowfullscreen></iframe>
-        </div>
-
-        <!-- See More Link -->
-        <div class="about" style="margin-top: 20px;"> 
-            <a href="https://www.jamesdyke.co.uk/testpage.html" class="see-more">See more</a>
-        </div>
-    </section>
-
-    <!-- Blender and 3D Modelling Work Section -->
-    <section style="margin-top: 30px;"> 
-        <h2>Blender and 3D Modelling Work</h2>
-        
         <div class="video-container">
             <iframe class="youtube-embed" src="https://www.youtube.com/embed/yVXqHosyloU" allowfullscreen></iframe>
             <iframe class="youtube-embed" src="https://www.youtube.com/embed/XQ8hTK7f5ko" allowfullscreen></iframe>
@@ -334,12 +357,6 @@
             photo.addEventListener('click', () => {
                 if (photo.requestFullscreen) {
                     photo.requestFullscreen();
-                } else if (photo.mozRequestFullScreen) { /* Firefox */
-                    photo.mozRequestFullScreen();
-                } else if (photo.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-                    photo.webkitRequestFullscreen();
-                } else if (photo.msRequestFullscreen) { /* IE/Edge */
-                    photo.msRequestFullscreen();
                 }
             });
         });
@@ -347,10 +364,6 @@
 
 </body>
 </html>
-
-
-
-
 
 
 
