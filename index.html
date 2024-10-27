@@ -18,8 +18,8 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw; /* Full viewport width */
-            height: 100vh; /* Full viewport height */
+            width: 100vw;
+            height: 100vh;
             background: url('Screenshot 2024-09-26 122134.png') no-repeat center center fixed;
             background-size: cover;
             z-index: -1;
@@ -46,7 +46,7 @@
             text-align: center;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            z-index: 2; /* Ensure header is above other content */
+            z-index: 2;
         }
 
         header.visible {
@@ -54,7 +54,7 @@
         }
 
         header h1 {
-            font-size: 8vw; /* Default for mobile */
+            font-size: 8vw;
             background: linear-gradient(90deg, #ffffff, #AABBC1);
             -webkit-background-clip: text;
             color: transparent;
@@ -70,15 +70,15 @@
         /* Section Styling */
         section {
             padding: 100px 20px;
-            min-height: 100vh; /* Set sections to take full height of viewport */
+            min-height: 100vh;
             position: relative;
             z-index: 2;
             text-align: center;
-            box-sizing: border-box; /* Include padding in height calculations */
+            box-sizing: border-box;
         }
 
         section h2 {
-            font-size: 7vw; /* Default for mobile */
+            font-size: 7vw;
             background: linear-gradient(90deg, #ffffff, #AABBC1);
             -webkit-background-clip: text;
             color: transparent;
@@ -90,13 +90,13 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.6); /* Subtle background for better readability */
+            background-color: rgba(0, 0, 0, 0.6);
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
 
         .about {
-            font-size: 5vw; /* Default for mobile */
+            font-size: 5vw;
             background: linear-gradient(90deg, #ffffff, #AABBC1);
             -webkit-background-clip: text;
             color: transparent;
@@ -107,7 +107,7 @@
 
         /* Contact Me and Email Styling */
         .contact-title {
-            font-size: 6vw; /* Default for mobile */
+            font-size: 6vw;
             color: white;
             margin: 40px 0;
         }
@@ -117,7 +117,7 @@
             cursor: pointer;
             text-decoration: none;
             transition: color 0.3s;
-            font-size: 5vw; /* Default for mobile */
+            font-size: 5vw;
         }
 
         .email:hover, .see-more:hover {
@@ -137,7 +137,7 @@
         .youtube-embed {
             width: 100%;
             height: auto;
-            max-width: 800px; /* Restrict max size on larger screens */
+            max-width: 800px;
             aspect-ratio: 16 / 9;
             border: none;
             border-radius: 20px;
@@ -155,7 +155,7 @@
         .photos-section img {
             width: 100%;
             height: auto;
-            max-width: 800px; /* Restrict max size on larger screens */
+            max-width: 800px;
             margin: 20px 0;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -164,7 +164,7 @@
 
         /* Gear Section Styling */
         .gear-section {
-            font-size: 5vw; /* Default for mobile */
+            font-size: 5vw;
             color: white;
             text-align: center;
             line-height: 1.6;
@@ -181,66 +181,26 @@
             background-color: rgba(0, 0, 0, 0.7);
         }
 
-        /* Desktop Responsiveness: Larger text size for larger screens */
+        /* Desktop Responsiveness */
         @media (min-width: 1024px) {
-            header h1 {
-                font-size: 64px; /* Larger for PC */
-            }
-
-            section h2 {
-                font-size: 48px; /* Larger for PC */
-            }
-
-            .about {
-                font-size: 28px; /* Larger for PC */
-            }
-
-            .contact-title {
-                font-size: 32px; /* Larger for PC */
-            }
-
-            .email, .see-more {
-                font-size: 24px; /* Larger for PC */
-            }
-
-            .gear-section {
-                font-size: 24px; /* Larger for PC */
-            }
-
-            footer {
-                font-size: 20px; /* Larger for PC */
-            }
-
-            .arrow-down {
-                font-size: 40px; /* Larger for PC */
-            }
+            header h1 { font-size: 64px; }
+            section h2 { font-size: 48px; }
+            .about { font-size: 28px; }
+            .contact-title { font-size: 32px; }
+            .email, .see-more { font-size: 24px; }
+            .gear-section { font-size: 24px; }
+            footer { font-size: 20px; }
+            .arrow-down { font-size: 40px; }
         }
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 10vw; /* Larger header for smaller screens */
-            }
-
-            section h2 {
-                font-size: 8vw;
-            }
-
-            .about, .contact-title {
-                font-size: 6vw;
-            }
-
-            .email, .see-more {
-                font-size: 5vw;
-            }
-
-            .gear-section {
-                font-size: 5vw;
-            }
-
-            .arrow-down {
-                font-size: 7vw;
-            }
+            header h1 { font-size: 10vw; }
+            section h2 { font-size: 8vw; }
+            .about, .contact-title { font-size: 6vw; }
+            .email, .see-more { font-size: 5vw; }
+            .gear-section { font-size: 5vw; }
+            .arrow-down { font-size: 7vw; }
         }
 
         /* Latest Video Embed */
@@ -294,13 +254,19 @@
         <iframe class="latest-video-embed" src="https://www.youtube.com/embed/fSWmNVgQ0TA?start=56" allowfullscreen></iframe>
     </section>
 
-    <!-- My Latest Projects Section -->
+    <!-- My Latest Projects Section with New Videos -->
     <section>
         <h2>My Latest Projects</h2>
         <div class="video-container">
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/yVXqHosyloU" allowfullscreen></iframe>
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/XQ8hTK7f5ko" allowfullscreen></iframe>
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/w_8risEbGCA" allowfullscreen></iframe>
+            <!-- First row of video embeds -->
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/zl5QkJ1tcIo?start=20" allowfullscreen></iframe>
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/leGD7leoVZg" allowfullscreen></iframe>
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/wTLT-_4oI8k" allowfullscreen></iframe>
+            
+            <!-- Second row of video embeds -->
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/LYnHJWS6tEg?start=20" allowfullscreen></iframe>
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/7sMfB3WjCwA" allowfullscreen></iframe>
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/NdP65Rb5AXQ" allowfullscreen></iframe>
         </div>
     </section>
 
@@ -332,7 +298,7 @@
         window.addEventListener('scroll', function() {
             const backgroundImage = document.getElementById('backgroundImage');
             const scrollPosition = window.scrollY;
-            const blurAmount = Math.min(scrollPosition / 100, 10); // Adjust the divisor for blur sensitivity
+            const blurAmount = Math.min(scrollPosition / 100, 10);
             backgroundImage.style.filter = `blur(${blurAmount}px)`;
 
             // Header Fade-In on Scroll to Top
@@ -352,7 +318,6 @@
 
         // Fullscreen for Photos
         const photos = document.querySelectorAll('.photos-section img');
-
         photos.forEach(photo => {
             photo.addEventListener('click', () => {
                 if (photo.requestFullscreen) {
@@ -364,6 +329,7 @@
 
 </body>
 </html>
+
 
 
 
