@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do You Like Men or Not?</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #87CEFA;
+      overflow: hidden;
+      margin: 0;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Background Dots */
+    .background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: -1; /* Ensure the background dots are behind everything else */
+    }
+
+    .dot {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: #4682B4;
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: float 5s infinite ease-in-out;
+    }
+
+    /* Animation for Dots */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Start Button Styles */
+    .start-container {
+      text-align: center;
+      z-index: 2; /* Ensure start button is above the background */
+      position: relative;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background-color: #4682B4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .button:hover {
+      background-color: #36628C;
+    }
+
+    /* Quiz Styles */
+    .quiz-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      text-align: center;
+      display: none; /* Hide quiz container initially */
+      flex-direction: column;
+      align-items: center;
+      z-index: 1; /* Ensure quiz container is above background */
+      position: relative;
+    }
+
+    .question {
+      margin: 15px 0;
+      font-size: 18px;
+      color: #444;
+      display: none; /* Hide all questions initially */
+    }
+
+    #result {
+      font-size: 20px;
+      color: #333;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      background-color: #f0f0f0;
+      border-radius: 25px;
+      margin-top: 30px;
+      height: 25px;
+      display: none; /* Hidden initially */
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background-color: #4682B4;
+      border-radius: 25px;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      line-height: 25px;
+    }
+
+    .result-heading {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    /* Fixed Reveal Answers Button */
+    #revealButton {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      background-color: #4682B4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 2; /* Ensure the button is always above everything else */
+    }
+
+    #revealButton:disabled {
+      background-color: #ddd;
+      cursor: not-allowed;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Background Dots -->
+  <div class="background">
+    <div class="dot" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+    <div class="dot" style="top: 20%; left: 60%; animation-delay: 1s;"></div>
+    <div class="dot" style="top: 50%; left: 30%; animation-delay: 2s;"></div>
+    <div class="dot" style="top: 70%; left: 80%; animation-delay: 3s;"></div>
+  </div>
+
+  <!-- Start Button -->
+  <div class="start-container">
+    <h1>Do You Like Men or Not?</h1>
+    <button class="button" id="startButton">Start the Test</button>
+  </div>
+
+  <!-- Quiz Container -->
+  <div class="quiz-container" id="quizContainer">
+    <!-- Questions -->
+    <div id="quiz">
+      <div class="question" id="q1">
+        1. Do you like talking to men?
+        <br>
+        <button class="button answer-button" data-next="2">Yes</button>
+        <button class="button answer-button" data-next="2">No</button>
+      </div>
+      <div class="question" id="q2">
+        2. Do you enjoy spending time with men?
+        <br>
+        <button class="button answer-button" data-next="3">Yes</button>
+        <button class="button answer-button" data-next="3">No</button>
+      </div>
+      <div class="question" id="q3">
+        3. Do you find men interesting?
+        <br>
+        <button class="button answer-button" data-next="4">Yes</button>
+        <button class="button answer-button" data-next="4">No</button>
+      </div>
+      <div class="question" id="q4">
+        4. Do you like watching movies with men?
+        <br>
+        <button class="button answer-button" data-next="5">Yes</button>
+        <button class="button answer-button" data-next="5">No</button>
+      </div>
+      <div class="question" id="q5">
+        5. Do you feel comfortable around men?
+        <br>
+        <button class="button answer-button" data-next="6">Yes</button>
+        <button class="button answer-button" data-next="6">No</button>
+      </div>
+      <div class="question" id="q6">
+        6. Do you enjoy talking about sports with men?
+        <br>
+        <button class="button answer-button" data-next="7">Yes</button>
+        <button class="button answer-button" data-next="7">No</button>
+      </div>
+      <div class="question" id="q7">
+        7. Do you admire men’s fashion sense?
+        <br>
+        <button class="button answer-button" data-next="8">Yes</button>
+        <button class="button answer-button" data-next="8">No</button>
+      </div>
+      <div class="question" id="q8">
+        8. Do you like talking about work with men?
+        <br>
+        <button class="button answer-button" data-next="9">Yes</button>
+        <button class="button answer-button" data-next="9">No</button>
+      </div>
+      <div class="question" id="q9">
+        9. Do you enjoy listening to men’s advice?
+        <br>
+        <button class="button answer-button" data-next="10">Yes</button>
+        <button class="button answer-button" data-next="10">No</button>
+      </div>
+      <div class="question" id="q10">
+        10. Do you enjoy traveling with men?
+        <br>
+        <button class="button answer-button" data-next="result">Yes</button>
+        <button class="button answer-button" data-next="result">No</button>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div id="result" style="display: none;">
+      <div class="result-heading" id="resultHeading"></div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reveal Answers Button -->
+  <button id="revealButton" disabled>Reveal Answers</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const startButton = document.getElementById('startButton');
+      const questions = document.querySelectorAll('.question');
+      const result = document.getElementById('result');
+      const quizContainer = document.getElementById('quizContainer');
+      const resultHeading = document.getElementById('resultHeading');
+      const progressBar = document.getElementById('progressBar');
+      const revealButton = document.getElementById('revealButton');
+      const progressBarContainer = document.querySelector('.progress-bar-container');
+      let answeredQuestions = 0;
+
+      // Start the quiz
+      startButton.addEventListener('click', function() {
+        document.querySelector('.start-container').style.display = 'none'; // Hide the start screen
+        quizContainer.style.display = 'flex'; // Show the quiz container
+        showQuestion(1); // Show the first question
+        progressBarContainer.style.display = 'block'; // Show the progress bar
+      });
+
+      // Function to show a specific question
+      function showQuestion(questionNumber) {
+        questions.forEach(function(question) {
+          question.style.display = 'none'; // Hide all questions
+        });
+        const currentQuestion = document.getElementById('q' + questionNumber);
+        currentQuestion.style.display = 'block'; // Show the current question
+      }
+
+      // Event listener for answer buttons
+      document.querySelectorAll('.answer-button').forEach(function(button) {
+        button.addEventListener('click', function() {
+          const nextQuestion = this.getAttribute('data-next');
+          answeredQuestions++;
+          if (nextQuestion === 'result') {
+            showResult();
+          } else {
+            showQuestion(nextQuestion);
+          }
+          updateProgressBar();
+        });
+      });
+
+      // Update the progress bar
+      function updateProgressBar() {
+        const totalQuestions = 10;
+        const progress = (answeredQuestions / totalQuestions) * 100;
+        progressBar.style.width = progress + '%';
+        progressBar.textContent = Math.round(progress) + '%';
+
+        // Enable the Reveal Answers button after all questions are answered
+        if (answeredQuestions === totalQuestions) {
+          revealButton.disabled = false;
+        }
+      }
+
+      // Function to show the result
+      function showResult() {
+        quizContainer.style.display = 'none'; // Hide the quiz container
+        result.style.display = 'block'; // Show the result container
+        resultHeading.textContent = 'Your result: Congratulations!'; // Customize result message
+        progressBarContainer.style.display = 'none'; // Hide the progress bar when results are shown
+      }
+
+      // Event listener for the reveal answers button
+      revealButton.addEventListener('click', function() {
+        window.location.href = "https://www.jamesdyke.co.uk/testresults.html";
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
