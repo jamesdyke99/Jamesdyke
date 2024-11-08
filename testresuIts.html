@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percentage Counter</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #87CEFA;
+      overflow: hidden;
+      margin: 0;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Background Dots */
+    .background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: -1; /* Ensure the background dots are behind everything else */
+    }
+
+    .dot {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: #4682B4;
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: float 5s infinite ease-in-out;
+    }
+
+    /* Animation for Dots */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Centered Text and Counter */
+    .counter-container {
+      text-align: center;
+      color: #333;
+      position: relative;
+      z-index: 1; /* Ensure the counter is above the background */
+    }
+
+    .counter-container h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .counter-container h2 {
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    /* Random Counter Styles */
+    .percentage-counter {
+      font-size: 100px;
+      font-weight: bold;
+      color: #4682B4;
+      margin: 20px 0;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Dots -->
+  <div class="background">
+    <div class="dot" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+    <div class="dot" style="top: 20%; left: 60%; animation-delay: 1s;"></div>
+    <div class="dot" style="top: 50%; left: 30%; animation-delay: 2s;"></div>
+    <div class="dot" style="top: 70%; left: 80%; animation-delay: 3s;"></div>
+  </div>
+
+  <!-- Counter Container -->
+  <div class="counter-container">
+    <h1>You are</h1>
+    <h2 class="percentage-counter" id="percentageCounter">0%</h2>
+    <h1>Gay</h1>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const percentageCounter = document.getElementById('percentageCounter');
+
+      // Function to generate a random percentage between 80% and 600%
+      function getRandomPercentage() {
+        return Math.floor(Math.random() * (600 - 80 + 1)) + 80;
+      }
+
+      // Function to animate the percentage count and land on 0%
+      function animateCounter() {
+        const randomPercentage = getRandomPercentage();
+        let currentPercentage = randomPercentage;
+        const duration = 3000; // Duration of animation in milliseconds
+        const decrement = randomPercentage / (duration / 100);
+
+        function updateCounter() {
+          currentPercentage -= decrement;
+          if (currentPercentage <= 0) {
+            currentPercentage = 0;
+            clearInterval(counterInterval);
+          }
+          percentageCounter.textContent = Math.round(currentPercentage) + '%';
+        }
+
+        const counterInterval = setInterval(updateCounter, 100);
+      }
+
+      // Initial call to start the animation once the page loads
+      animateCounter();
+    });
+  </script>
+
+</body>
+</html>
