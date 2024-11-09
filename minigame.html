@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cursor Bird Game</title>
+  <title>Mobile-Friendly Cursor Bird Game</title>
   <style>
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background: #87CEFA; /* Light blue base background */
+      background: #87CEFA; /* Light blue background */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -23,18 +23,6 @@
       display: block;
       background: transparent;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Vignette effect */
-    #background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
-      z-index: -3;
-      pointer-events: none;
     }
 
     /* Score Display */
@@ -77,11 +65,11 @@
       border-radius: 50%;
       opacity: 0.8;
       box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
-      z-index: -2; /* Behind pipes and bird */
+      z-index: 1; /* Clouds in front of background */
       animation: moveClouds linear infinite;
     }
 
-    /* Cloud movement and sizes */
+    /* Cloud sizes and positions */
     .cloud1 { width: 200px; height: 100px; top: 10%; left: -200px; animation-duration: 30s; }
     .cloud2 { width: 250px; height: 120px; top: 30%; left: -300px; animation-duration: 35s; }
     .cloud3 { width: 180px; height: 90px; top: 50%; left: -250px; animation-duration: 40s; }
@@ -96,10 +84,8 @@
   </style>
 </head>
 <body>
-  <!-- Background with vignette effect -->
-  <div id="background"></div>
 
-  <!-- Moving Clouds (behind game content) -->
+  <!-- Moving Clouds (positioned in front of background) -->
   <div class="cloud cloud1"></div>
   <div class="cloud cloud2"></div>
   <div class="cloud cloud3"></div>
@@ -128,8 +114,14 @@
     let timeElapsed = 0; // Time counter to increase speed
 
     // Resize canvas to full screen
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      targetX = 50; // Reset bird target position for resizing
+      targetY = canvas.height / 2;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
     // Bird object
     const bird = {
@@ -178,10 +170,8 @@
         ctx.shadowColor = "rgba(0, 0, 0, 0.3)";
         ctx.shadowBlur = 10;
 
-        // Draw the top pipe (rectangular, no rounded corners)
+        // Draw the top pipe
         ctx.fillRect(this.x, 0, pipeWidth, this.topHeight);
-
-        // Add reflection on the top pipe (lighter green line)
         ctx.strokeStyle = '#66FF66'; // Light green for reflection
         ctx.lineWidth = 3;
         ctx.beginPath();
@@ -189,10 +179,8 @@
         ctx.lineTo(this.x + pipeWidth, this.topHeight - 10);
         ctx.stroke();
 
-        // Draw the bottom pipe (rectangular, no rounded corners)
+        // Draw the bottom pipe
         ctx.fillRect(this.x, canvas.height - this.bottomHeight, pipeWidth, this.bottomHeight);
-
-        // Add reflection on the bottom pipe (lighter green line)
         ctx.beginPath();
         ctx.moveTo(this.x, canvas.height - this.bottomHeight + 10);
         ctx.lineTo(this.x + pipeWidth, canvas.height - this.bottomHeight + 10);
@@ -258,7 +246,6 @@
         pipe.update();
         pipe.draw();
 
-        // Check if bird passed the pipe
         if (pipe.x + pipeWidth < bird.x && !pipe.passed) {
           pipe.passed = true;
           score++;
@@ -280,7 +267,7 @@
       requestAnimationFrame(gameLoop);
     }
 
-    // Mouse or Touch event for controlling the bird
+    // Control bird position with mouse or touch
     window.addEventListener('mousemove', (e) => {
       targetX = e.clientX;
       targetY = e.clientY;
@@ -293,7 +280,7 @@
       targetY = touch.clientY;
     });
 
-    // Start game when tapped or clicked
+    // Start game with tap or click
     canvas.addEventListener('click', () => {
       if (isGameOver) {
         pipes = [];
@@ -302,7 +289,7 @@
         bird.trail = [];
         score = 0;
         isGameOver = false;
-        gameLoop(); // Start immediately after game over
+        gameLoop();
       } else if (!gameStarted) {
         gameStarted = true;
         document.getElementById('startScreen').style.display = 'none';
@@ -312,6 +299,7 @@
   </script>
 </body>
 </html>
+
 
 
 
