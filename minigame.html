@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Prevent zooming and panning on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
   <title>Mobile-Friendly Cursor Bird Game</title>
   <style>
     body, html {
@@ -108,16 +109,16 @@
     let gameStarted = false;
     let targetX = 50;
     let targetY = canvas.height / 2;
-    const easingFactor = 0.05; // Increased delay for bird's responsiveness
-    let pipeSpeed = 1; // Slower initial speed of pipes
-    let pipeSpeedIncreaseInterval = 10000; // Every 10 seconds increase speed
-    let timeElapsed = 0; // Time counter to increase speed
+    const easingFactor = 0.05;
+    let pipeSpeed = 1;
+    let pipeSpeedIncreaseInterval = 10000;
+    let timeElapsed = 0;
 
     // Resize canvas to full screen
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      targetX = 50; // Reset bird target position for resizing
+      targetX = 50;
       targetY = canvas.height / 2;
     }
     resizeCanvas();
@@ -138,7 +139,6 @@
         ctx.fill();
         ctx.shadowBlur = 0;
 
-        // Draw the bird's trail
         for (let i = 0; i < this.trail.length; i++) {
           let trail = this.trail[i];
           ctx.fillStyle = 'rgba(255, 255, 0, ' + (1 - i / 10) + ')';
@@ -153,7 +153,7 @@
         this.trail.push({ x: this.x, y: this.y });
 
         if (this.trail.length > 10) {
-          this.trail.shift(); // Remove oldest trail point
+          this.trail.shift();
         }
       }
     };
@@ -163,23 +163,21 @@
       this.x = canvas.width;
       this.topHeight = Math.random() * (canvas.height - pipeGap);
       this.bottomHeight = canvas.height - this.topHeight - pipeGap;
-      this.passed = false; // Tracks if bird has passed the pipe
+      this.passed = false;
 
       this.draw = function() {
         ctx.fillStyle = '#228B22';
         ctx.shadowColor = "rgba(0, 0, 0, 0.3)";
         ctx.shadowBlur = 10;
 
-        // Draw the top pipe
         ctx.fillRect(this.x, 0, pipeWidth, this.topHeight);
-        ctx.strokeStyle = '#66FF66'; // Light green for reflection
+        ctx.strokeStyle = '#66FF66';
         ctx.lineWidth = 3;
         ctx.beginPath();
         ctx.moveTo(this.x, this.topHeight - 10);
         ctx.lineTo(this.x + pipeWidth, this.topHeight - 10);
         ctx.stroke();
 
-        // Draw the bottom pipe
         ctx.fillRect(this.x, canvas.height - this.bottomHeight, pipeWidth, this.bottomHeight);
         ctx.beginPath();
         ctx.moveTo(this.x, canvas.height - this.bottomHeight + 10);
@@ -228,13 +226,13 @@
         return;
       }
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       bird.update();
       bird.draw();
 
       timeElapsed += 1000 / 60;
       if (timeElapsed >= pipeSpeedIncreaseInterval) {
-        pipeSpeed += 0.002; // Slow increase
+        pipeSpeed += 0.002;
         timeElapsed = 0;
       }
 
