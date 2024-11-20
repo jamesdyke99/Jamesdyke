@@ -604,78 +604,67 @@
             }
         });
     </script>
-<style>
-    /* Responsive Video Container */
-    .video-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-        margin-top: 40px;
-    }
-
-    .video-wrapper {
-        position: relative;
-        width: 100%;
-        max-width: 640px; /* Sets max width for larger screens */
-        height: 0;
-        padding-top: 56.25%; /* Aspect ratio 16:9 */
-        overflow: hidden;
-    }
-
-    .video-wrapper iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-
-    /* Mobile-specific adjustments */
-    @media (max-width: 768px) {
-        .video-wrapper {
-            max-width: 100%; /* Ensures full width on smaller screens */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Embeds</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
-    }
-</style>
 
-<section id="latest-video">
-    <h2>Latest short film</h2>
-    <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/fSWmNVgQ0TA?start=56" allowfullscreen></iframe>
-    </div>
-</section>
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-<section id="latest-projects">
-    <h2>My Latest Projects</h2>
-    <div class="video-container">
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/zl5QkJ1tcIo?start=20" allowfullscreen></iframe>
-        </div>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/leGD7leoVZg" allowfullscreen></iframe>
-        </div>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/wTLT-_4oI8k" allowfullscreen></iframe>
-        </div>
-    </div>
-</section>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-<section id="blender-renders">
-    <h2>Blender and 3D Rendering</h2>
-    <div class="video-container">
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/w_8risEbGCA" allowfullscreen></iframe>
-        </div>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/XQ8hTK7f5ko" allowfullscreen></iframe>
-        </div>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/yVXqHosyloU" allowfullscreen></iframe>
+        /* Added Responsive Video Embeds */
+        .video-container {
+            display: flex;
+            flex-direction: column; /* Stack videos vertically */
+            align-items: center;
+            gap: 20px;
+            margin: 0 auto;
+            width: 100%; /* Ensure container fits the screen */
+            box-sizing: border-box;
+        }
+
+        .youtube-embed {
+            width: 100%;
+            max-width: 800px; /* Max width for larger screens */
+            aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
+            border: none;
+        }
+
+        /* Responsive Adjustments for Small Screens */
+        @media (max-width: 768px) {
+            .youtube-embed {
+                max-width: 100%; /* Take full width on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>My Video Embeds</h1>
+    <div class="container">
+        <h2>Watch These Videos</h2>
+        <div class="video-container">
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/zl5QkJ1tcIo?start=20" allowfullscreen></iframe>
+            <iframe class="youtube-embed" src="https://www.youtube.com/embed/leGD7leoVZg" allowfullscreen></iframe>
         </div>
     </div>
-</section>
+</body>
+</html>
 
 </body>
 </html>
