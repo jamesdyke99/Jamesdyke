@@ -195,7 +195,7 @@
                 My name is James, I make cinematic short films of different locations and use my editing skills I have learned over the years to create impactful videos. I have over 5 years of experience editing videos and films. 
             </div>
             <div class="about">
-                I also enjoy Metalworking and Woodworking alongside my filmmaking. Combining creativity with technical skills allows me to produce unique content that tells compelling visual stories.
+                I also enjoy Metalworking and Woodworking alongside my filmmaking. Combining creativity with technical skills allows me to produce unique content that tells compelling visual stories. If o
      </div>
         <div class="about">I am always looking for ways to improve and people to collab with. If you are interested you can contact me</div>
         <div style="margin-top: 20px;">
@@ -609,62 +609,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Embeds</title>
+    <title>Responsive Video Embed with Particle Effect</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Added Responsive Video Embeds */
-        .video-container {
-            display: flex;
-            flex-direction: column; /* Stack videos vertically */
-            align-items: center;
-            gap: 20px;
-            margin: 0 auto;
-            width: 100%; /* Ensure container fits the screen */
-            box-sizing: border-box;
-        }
-
-        .youtube-embed {
+        /* Video Embeds */
+        .video-container iframe {
             width: 100%;
-            max-width: 800px; /* Max width for larger screens */
-            aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
+            height: auto;
+            max-width: 100%; /* Ensures videos are responsive */
+            aspect-ratio: 16 / 9; /* Maintain aspect ratio */
             border: none;
         }
 
-        /* Responsive Adjustments for Small Screens */
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .youtube-embed {
-                max-width: 100%; /* Take full width on mobile */
+            .video-container iframe {
+                width: 100%;
+                max-width: 100%;
+                height: 200px;
             }
+        }
+
+        /* Particle Effect Canvas */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Ensures particles are in the background */
         }
     </style>
 </head>
 <body>
-    <h1>My Video Embeds</h1>
-    <div class="container">
-        <h2>Watch These Videos</h2>
-        <div class="video-container">
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/zl5QkJ1tcIo?start=20" allowfullscreen></iframe>
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/leGD7leoVZg" allowfullscreen></iframe>
-        </div>
+    <!-- Particle Background Canvas -->
+    <canvas class="particles"></canvas>
+
+    <!-- Example Video Embed -->
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/example" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-</body>
-</html>
+
+    <script>
+        // Particle Animation
+        const canvas = document.querySelector('.particles');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const particles = Array(40).fill().map(() => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 5 + 2,
+            dx: Math.random() * 0.5 - 0.25,
+            dy: Math.random() * 0.5 - 0.25,
+        }));
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+                ctx.fillStyle = 'white';
+                ctx.fill();
+                p.x += p.dx;
+                p.y += p.dy;
+
+                if (p.x < 0 || p.x > canvas.width) p.dx = -p.dx;
+                if (p.y < 0 || p.y > canvas.height) p.dy = -p.dy;
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+    </script>
 
 </body>
 </html>
