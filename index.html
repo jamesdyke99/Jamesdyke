@@ -195,7 +195,7 @@
                 My name is James, I make cinematic short films of different locations and use my editing skills I have learned over the years to create impactful videos. I have over 5 years of experience editing videos and films. 
             </div>
             <div class="about">
-                I also enjoy Metalworking and Woodworking alongside my filmmaking. Combining creativity with technical skills allows me to produce unique content that tells compelling visual stories. If o
+                I also enjoy Metalworking and Woodworking alongside my filmmaking. Combining creativity with technical skills allows me to produce unique content that tells compelling visual stories. If
      </div>
         <div class="about">I am always looking for ways to improve and people to collab with. If you are interested you can contact me</div>
         <div style="margin-top: 20px;">
@@ -259,16 +259,18 @@
     <h2>Quotes from People I've Worked With</h2>
     <div class="testimonials-container" style="display: flex; justify-content: center; gap: 20px; flex-wrap: nowrap;">
         <div class="testimonial" style="max-width: 400px; text-align: center; flex: 0 0 auto;">
-            <p>"I've enjoyed working with James. I can see where we can both work to our strengths and have a good working relationship.
-                I intend to involve James in the quick 'first edit' of my future videos. We have had success with this. I find his editing style to be 'fresh' without being too much for a corporate audience."
-                <br><strong>- Feedback provided by Sy Joshua: Director of Race in the Workplace Pro</strong>
+            <p>I’ve known James since he began making films at age 11. 
+                I have loved how he has honed such a strong craft at a young age by exploring his directors voice in a playful way over the years. 
+                I am so excited by his potential. Definitely a young filmmaker to watch or more importantly to have on your team"
+                <br><strong>- Julia Black, BAFTA and Grierson nominated documentary director</strong>
             </p>
         </div>
         <div class="testimonial" style="max-width: 400px; text-align: center; flex: 0 0 auto;">
-            <p>"I’ve known James since he began making films at age 11. 
-                I have loved how he has honed such a strong craft at a young age by exploring his directors voice in a playful way over the years. 
-                I am so excited by his potential. Definitely a young filmmaker to watch or more importantly to have on your team"
-                <br><strong>Julia Black, BAFTA and Grierson nominated documentary director</strong>
+            <p>I've enjoyed working with James. I can see where we can both work to our strengths and have a good working relationship.
+
+                I intend to involve James in the quick 'first edit' of my future videos. We have had success with this. I find his editing style to be 'fresh' without being too much for a corporate audience.
+                
+                <br><strong>Feedback provided by Sy Joshua: Director of Race in the Workplace Pro</strong>
             </p>
         </div>
     </div>
@@ -337,11 +339,41 @@
 
 
 
+<style>
+    /* General Styling for Sections */
+    #latest-video {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    #latest-video h2 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    /* Default Size for PC */
+    .latest-video-embed {
+        width: 1280px; /* Larger size for desktop */
+        height: 720px; /* Maintain 16:9 aspect ratio */
+        border: none;
+    }
+
+    /* Responsive Adjustments for Mobile */
+    @media (max-width: 768px) {
+        .latest-video-embed {
+            width: 100%; /* Use full width of the container */
+            max-width: 1280px; /* Ensure it doesn't exceed the original size */
+            height: auto; /* Maintain aspect ratio automatically */
+        }
+    }
+</style>
+
 <!-- Latest Video Section -->
 <section id="latest-video">
     <h2>Latest short film</h2>
     <iframe class="latest-video-embed" src="https://www.youtube.com/embed/fSWmNVgQ0TA?start=56" allowfullscreen></iframe>
 </section>
+
 
 
 <!-- My Current Gear Section -->
@@ -532,25 +564,171 @@
     }
 </style>
 
-    <!-- My Latest Projects Section -->
-    <section>
-        <h2>My Latest Projects</h2>
-        <div class="video-container">
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/zl5QkJ1tcIo?start=20" allowfullscreen></iframe>
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/leGD7leoVZg" allowfullscreen></iframe>
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/wTLT-_4oI8k" allowfullscreen></iframe>
-        </div>
-    </section>
+<style>
+    /* General Styling for Sections */
+    section {
+        margin: 20px 0;
+    }
 
-    <!-- Blender and 3D Rendering Section -->
-    <section>
-        <h2>Blender and 3D Rendering</h2>
-        <div class="video-container">
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/w_8risEbGCA" allowfullscreen></iframe>
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/XQ8hTK7f5ko" allowfullscreen></iframe>
-            <iframe class="youtube-embed" src="https://www.youtube.com/embed/yVXqHosyloU" allowfullscreen></iframe>
-        </div>
-    </section>
+    h2 {
+        text-align: center;
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    /* Video Container Styling */
+    .video-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .video-container iframe {
+        width: 560px; /* Default width for desktop */
+        height: 315px; /* 16:9 aspect ratio for desktop */
+        border: none;
+    }
+
+    /* Responsive Scaling */
+    @media (max-width: 768px) {
+        .video-container iframe {
+            width: 320px; /* Smaller width for mobile */
+            height: 180px; /* Maintain 16:9 aspect ratio */
+        }
+    }
+</style>
+
+<style>
+    /* General Styling for Sections */
+    section {
+        margin: 20px 0;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    /* Video Container Styling */
+    .video-container {
+        display: flex;
+        flex-direction: column; /* Stack videos vertically */
+        align-items: center;   /* Center videos horizontally */
+        gap: 15px;             /* Space between videos */
+    }
+
+    .video-container iframe {
+        width: 560px; /* Full size for desktop */
+        height: 315px; /* Maintain 16:9 aspect ratio */
+        border: none;
+    }
+
+    /* Responsive Scaling */
+    @media (max-width: 768px) {
+        .video-container iframe {
+            width: 90%; /* Make the video width responsive */
+            height: auto; /* Automatically calculate height to maintain aspect ratio */
+        }
+    }
+</style>
+
+<style>
+    /* General Styling for Sections */
+    section {
+        margin: 20px 0;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    /* Video Container Styling */
+    .video-container {
+        display: flex;
+        flex-direction: column; /* Stack videos vertically */
+        align-items: center;   /* Center videos horizontally */
+        gap: 15px;             /* Space between videos */
+    }
+
+    /* Default Size for PC */
+    .video-container iframe {
+        width: 560px; /* Full size for desktop */
+        height: 315px; /* Maintain 16:9 aspect ratio */
+        border: none;
+    }
+
+    /* Responsive Adjustments for Mobile */
+    @media (max-width: 768px) {
+        .video-container iframe {
+            width: 100%; /* Use full width of the container */
+            max-width: 560px; /* Ensure it doesn't exceed the original size */
+            height: auto; /* Maintain aspect ratio automatically */
+        }
+    }
+</style>
+
+<style>
+    /* General Styling for Sections */
+    section {
+        margin: 20px 0;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    /* Video Container Styling */
+    .video-container {
+        display: flex;
+        flex-direction: column; /* Stack videos vertically */
+        align-items: center;   /* Center videos horizontally */
+        gap: 15px;             /* Space between videos */
+    }
+
+    /* Default Size for PC */
+    .video-container iframe {
+        width: 800px; /* Larger size for desktop */
+        height: 450px; /* Maintain 16:9 aspect ratio */
+        border: none;
+    }
+
+    /* Responsive Adjustments for Mobile */
+    @media (max-width: 768px) {
+        .video-container iframe {
+            width: 100%; /* Use full width of the container */
+            max-width: 800px; /* Ensure it doesn't exceed the original size */
+            height: auto; /* Maintain aspect ratio automatically */
+        }
+    }
+</style>
+
+<!-- My Latest Projects Section -->
+<section>
+    <h2>My Latest Projects</h2>
+    <div class="video-container">
+        <iframe class="youtube-embed" src="https://www.youtube.com/embed/zl5QkJ1tcIo?start=20" allowfullscreen></iframe>
+        <iframe class="youtube-embed" src="https://www.youtube.com/embed/leGD7leoVZg" allowfullscreen></iframe>
+        <iframe class="youtube-embed" src="https://www.youtube.com/embed/wTLT-_4oI8k" allowfullscreen></iframe>
+    </div>
+</section>
+
+<!-- Blender and 3D Rendering Section -->
+<section>
+    <h2>Blender and 3D Rendering</h2>
+    <div class="video-container">
+        <iframe class="youtube-embed" src="https://www.youtube.com/embed/w_8risEbGCA" allowfullscreen></iframe>
+        <iframe class="youtube-embed" src="https://www.youtube.com/embed/XQ8hTK7f5ko" allowfullscreen></iframe>
+        <iframe class="youtube-embed" src="https://www.youtube.com/embed/yVXqHosyloU" allowfullscreen></iframe>
+    </div>
+</section>
+
+
 
     <!-- Footer -->
     <footer>
@@ -603,88 +781,6 @@
                 document.body.classList.remove('scrolled');
             }
         });
-    </script>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Video Embed with Particle Effect</title>
-    <style>
-        /* Video Embeds */
-        .video-container iframe {
-            width: 100%;
-            height: auto;
-            max-width: 100%; /* Ensures videos are responsive */
-            aspect-ratio: 16 / 9; /* Maintain aspect ratio */
-            border: none;
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .video-container iframe {
-                width: 100%;
-                max-width: 100%;
-                height: 200px;
-            }
-        }
-
-        /* Particle Effect Canvas */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1; /* Ensures particles are in the background */
-        }
-    </style>
-</head>
-<body>
-    <!-- Particle Background Canvas -->
-    <canvas class="particles"></canvas>
-
-    <!-- Example Video Embed -->
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/example" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-
-    <script>
-        // Particle Animation
-        const canvas = document.querySelector('.particles');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        const particles = Array(40).fill().map(() => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            radius: Math.random() * 5 + 2,
-            dx: Math.random() * 0.5 - 0.25,
-            dy: Math.random() * 0.5 - 0.25,
-        }));
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
-                ctx.fillStyle = 'white';
-                ctx.fill();
-                p.x += p.dx;
-                p.y += p.dy;
-
-                if (p.x < 0 || p.x > canvas.width) p.dx = -p.dx;
-                if (p.y < 0 || p.y > canvas.height) p.dy = -p.dy;
-            });
-            requestAnimationFrame(animateParticles);
-        }
-
-        animateParticles();
     </script>
 
 </body>
