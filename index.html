@@ -339,11 +339,41 @@
 
 
 
+<style>
+    /* General Styling for Sections */
+    #latest-video {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    #latest-video h2 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    /* Default Size for PC */
+    .latest-video-embed {
+        width: 1280px; /* Larger size for desktop */
+        height: 720px; /* Maintain 16:9 aspect ratio */
+        border: none;
+    }
+
+    /* Responsive Adjustments for Mobile */
+    @media (max-width: 768px) {
+        .latest-video-embed {
+            width: 100%; /* Use full width of the container */
+            max-width: 1280px; /* Ensure it doesn't exceed the original size */
+            height: auto; /* Maintain aspect ratio automatically */
+        }
+    }
+</style>
+
 <!-- Latest Video Section -->
 <section id="latest-video">
     <h2>Latest short film</h2>
     <iframe class="latest-video-embed" src="https://www.youtube.com/embed/fSWmNVgQ0TA?start=56" allowfullscreen></iframe>
 </section>
+
 
 
 <!-- My Current Gear Section -->
