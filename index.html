@@ -651,6 +651,31 @@
             });
             requestAnimationFrame(animateParticles);
         }
+/* General styling for all video embeds */
+iframe {
+    width: 100%; /* Make iframe take up 100% of its container's width */
+    height: 0; /* Set height to 0, as we will use padding to maintain aspect ratio */
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (height = 9/16 * width) */
+    border: none; /* Remove border around iframe */
+    display: block; /* Block display ensures proper spacing */
+    margin-bottom: 20px; /* Space between videos */
+}
+
+/* Optional: Styling for the container of the iframe to center it */
+.video-wrapper {
+    max-width: 100%; /* Ensure it doesn't stretch beyond the container */
+    margin: 0 auto; /* Center the video */
+    padding: 10px; /* Optional: Adds padding around the video */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+/* Mobile-specific styling */
+@media (max-width: 768px) {
+    iframe {
+        width: 100%; /* Full width on mobile */
+        height: auto; /* Height adjusts to maintain aspect ratio */
+    }
+}
 
         animateParticles();
 
