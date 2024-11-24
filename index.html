@@ -19,29 +19,28 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;  /* Use 100% width for scaling */
-    height: 100%; /* Use 100% height to prevent overflow */
+    width: 100vw;
+    height: 100vh;
     background: url('Screenshot 2024-09-26 122134.png') no-repeat center center fixed;
     background-size: cover;
     z-index: -1;
     filter: blur(0);
     transition: filter 0.2s ease;
-    will-change: filter; /* Improve performance during animation */
 }
 
-/* When the page is scrolled, apply the blur effect */
-body.scrolled .background-image,
-body.scrolled .particles {
-    filter: blur(5px);
-}
-
-/* For mobile, use background-attachment to prevent the scroll issue */
+/* Remove the parallax effect on mobile */
 @media (max-width: 768px) {
     .background-image {
-        background-attachment: scroll; /* Disable the 'fixed' background on mobile */
+        background-attachment: scroll; /* This removes the parallax effect */
     }
 }
 
+        }
+
+        body.scrolled .background-image,
+        body.scrolled .particles {
+            filter: blur(5px);
+        }
 
         /* Particle Overlay */
         .particles {
