@@ -14,24 +14,34 @@
             overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
-        /* Background Animation */
-        .background-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: url('Screenshot 2024-09-26 122134.png') no-repeat center center fixed;
-            background-size: cover;
-            z-index: -1;
-            filter: blur(0);
-            transition: filter 0.2s ease;
-        }
+       /* Background Animation */
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;  /* Use 100% width for scaling */
+    height: 100%; /* Use 100% height to prevent overflow */
+    background: url('Screenshot 2024-09-26 122134.png') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
+    filter: blur(0);
+    transition: filter 0.2s ease;
+    will-change: filter; /* Improve performance during animation */
+}
 
-        body.scrolled .background-image,
-        body.scrolled .particles {
-            filter: blur(5px);
-        }
+/* When the page is scrolled, apply the blur effect */
+body.scrolled .background-image,
+body.scrolled .particles {
+    filter: blur(5px);
+}
+
+/* For mobile, use background-attachment to prevent the scroll issue */
+@media (max-width: 768px) {
+    .background-image {
+        background-attachment: scroll; /* Disable the 'fixed' background on mobile */
+    }
+}
+
 
         /* Particle Overlay */
         .particles {
@@ -368,46 +378,11 @@
     }
 </style>
 
-<style>
-    /* General Styling for Sections */
-    #latest-video {
-        margin: 20px 0;
-        text-align: center; /* Center align the content */
-    }
-
-    #latest-video h2 {
-        font-size: 1.8em;
-        margin-bottom: 20px;
-    }
-
-    /* Wrapper for Video to Maintain Aspect Ratio */
-    .latest-video-wrapper {
-        position: relative;
-        width: 100%; /* Full width for responsiveness */
-        max-width: 1280px; /* Limit maximum size */
-        aspect-ratio: 16 / 9; /* Enforce 16:9 aspect ratio */
-        margin: 0 auto; /* Center the wrapper */
-        background: #000; /* Optional: Black background while loading */
-    }
-
-    .latest-video-wrapper iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-</style>
-
 <!-- Latest Video Section -->
 <section id="latest-video">
     <h2>Latest short film</h2>
-    <div class="latest-video-wrapper">
-        <iframe class="latest-video-embed" src="https://www.youtube.com/embed/fSWmNVgQ0TA?start=56" allowfullscreen></iframe>
-    </div>
+    <iframe class="latest-video-embed" src="https://www.youtube.com/embed/fSWmNVgQ0TA?start=56" allowfullscreen></iframe>
 </section>
-
 
 
 
