@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Dyke Media</title>
+    <style>
+        @import url('https://fonts.google.com/specimen/Open+Sans');
+
+        /* General Body Styling */
+        body {
+            margin: 0;
+            font-family: 'OpenSans', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+       /* Background Animation */
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('Screenshot 2024-09-26 122134.png') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
+    filter: blur(0);
+    transition: filter 0.2s ease;
+}
+
+/* Remove the parallax effect on mobile */
+@media (max-width: 768px) {
+    .background-image {
+        background-attachment: scroll; /* This removes the parallax effect */
+    }
+}
+
+        
+
+      
+        
+
+        /* Particle Overlay */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            filter: blur(0);
+            transition: filter 0.2s ease;
+        }
+
+        /* Overlay to darken the background */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        /* Header Styling */
+        header {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            z-index: 2;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        header h1 {
+            font-size: 64px;
+            background: linear-gradient(90deg, #ffffff, #AABBC1);
+            -webkit-background-clip: text;
+            color: transparent;
+            background-clip: text;
+            margin: 0;
+            animation: colorShift 5s infinite linear;
+        }
+
+        @keyframes colorShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(180deg); }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 20px;
+            min-height: 100vh;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        section h2 {
+            font-size: 48px;
+            background: linear-gradient(90deg, #ffffff, #AABBC1);
+            -webkit-background-clip: text;
+            color: transparent;
+            background-clip: text;
+            margin-bottom: 50px;
+        }
+
+        /* About Me Section */
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1100px; /* Increased width */
+            margin: 0 auto;
+            color: #fff;
+            font-size: 28px; /* Larger font size */
+            line-height: 2; /* Adjusted line height for readability */
+        }
+
+        .about {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        /* Email Button Styling */
+        .email {
+            display: inline-block;
+            font-size: 24px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s, text-decoration 0.3s;
+        }
+
+        .email:hover {
+            color: #007bff; /* Blue color */
+            text-decoration: underline;
+        }
+
+        /* Video Embeds */
+        iframe {
+            width: 100%;
+            max-width: 1280px; /* Larger size for latest video */
+            height: 720px; /* Larger height */
+            border: none;
+        }
+
+        /* Footer Styling */
+        footer {
+            background: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Desktop Responsiveness */
+        @media (min-width: 1024px) {
+            header h1 { font-size: 64px; }
+            section h2 { font-size: 48px; }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            header h1 { font-size: 10vw; }
+            section h2 { font-size: 8vw; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Image Animation -->
+    <div class="background-image"></div>
+
+    <!-- Particle Overlay -->
+    <canvas class="particles"></canvas>
+
+    <!-- Dark Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <h1>James Dyke Media</h1>
+    </header>
+
+<!-- About Me Section -->
+<section style="padding-top: 250px;">
+    <div class="about-section-container">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <div class="about">
+                My name is James, I make cinematic short films of different locations and use my editing skills I have learned over the years to create impactful videos. I have over 5 years of experience editing videos and films. 
+            </div>
+            <div class="about">
+                I also enjoy Metalworking and Woodworking alongside my filmmaking. Combining creativity with technical skills allows me to produce unique content that tells compelling visual stories.
+     </div>
+        <div class="about">I am always looking for ways to improve and people to collab with. If you are interested you can contact me</div>
+        <div style="margin-top: 20px;">
+            <a href="mailto:jamesdyke99@gmail.com" class="email">jamesdyke99@gmail.com</a>
+        </div>
+    
+</section>
+
+<style>
+    /* Translucent background for About Me Section */
+    .about-section-container {
+        background: rgba(255, 255, 255, 0.2);  /* Translucent white background */
+        padding: 30px;
+        border-radius: 10px;
+        color: #fff;  /* White text color for contrast */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  /* Optional: add some shadow for depth */
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .about-section-container h2 {
+        font-size: 48px;
+        background: linear-gradient(90deg, #ffffff, #AABBC1);
+        -webkit-background-clip: text;
+        color: transparent;
+        background-clip: text;
+        margin-bottom: 30px;
+    }
+
+    .about-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+        color: #fff;
+        font-size: 28px;
+        line-height: 2;
+    }
+
+    .about {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .email {
+        font-size: 24px;
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s, text-decoration 0.3s;
+    }
+
+    .email:hover {
+        color: hsl(192, 100%, 79%); /* Blue color */
+        text-decoration: underline;
+    }
+</style>
+
+    
+<section id="testimonials">
+    <h2>Quotes from People I've Worked With</h2>
+    <div class="testimonials-container" style="display: flex; justify-content: center; gap: 20px; flex-wrap: nowrap;">
+        <div class="testimonial" style="max-width: 400px; text-align: center; flex: 0 0 auto;">
+            <p>I’ve known James since he began making films at age 11. 
+                I have loved how he has honed such a strong craft at a young age by exploring his directors voice in a playful way over the years. 
+                I am so excited by his potential. Definitely a young filmmaker to watch or more importantly to have on your team"
+                <br><strong>- Julia Black, BAFTA and Grierson nominated documentary director</strong>
+            </p>
+        </div>
+        <div class="testimonial" style="max-width: 400px; text-align: center; flex: 0 0 auto;">
+            <p>I've enjoyed working with James. I can see where we can both work to our strengths and have a good working relationship.
+
+                I intend to involve James in the quick 'first edit' of my future videos. We have had success with this. I find his editing style to be 'fresh' without being too much for a corporate audience.
+                
+                <br><strong>Feedback provided by Sy Joshua: Director of Race in the Workplace Pro</strong>
+            </p>
+        </div>
+    </div>
+</section>
+
+
+
+<style>
+    /* Testimonials Section */
+    #testimonials {
+        padding: 50px 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;  /* Aligns everything vertically */
+        justify-content: space-between; /* Distributes space between the quotes and other elements */
+        min-height: 400px; /* Ensures there's enough height to fill the section */
+    }
+
+    #testimonials h2 {
+        font-size: 36px;
+        color: #fff;
+        margin-bottom: 40px;
+    }
+
+    /* Styling for testimonial container */
+    .testimonials-container {
+        display: flex;
+        flex-direction: column;  /* Stack testimonials vertically */
+        align-items: center;
+        gap: 40px;  /* Adds space between each testimonial */
+        margin-top: 40px;  /* Adds space above the testimonials */
+        width: 100%;  /* Ensures the container is as wide as the parent */
+        box-sizing: border-box;
+    }
+
+    /* Individual testimonial styling */
+    .testimonial {
+        background-color: rgba(0, 0, 0, 0.7);  /* Dark background with opacity */
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 800px;
+        width: 90%;  /* Ensures testimonials don't stretch too far */
+        margin: 0 auto;
+        box-sizing: border-box;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .testimonial p {
+        font-size: 20px;  /* Larger font for the quote text */
+    }
+
+    /* Styling for the person's name and role */
+    .testimonial strong {
+        display: inline-block;
+        font-size: 22px;  /* Slightly larger text for the attribution */
+        font-weight: normal;
+        color: #ffffff;  /* Ensure it is readable */
+        margin-top: 10px;
+        text-align: center;  /* Center-align the attribution */
+        width: 100%;
+    }
+</style>
+
+
+
+
+
+
+   
+
+<section id="gear">
+    <h2>My Latest film</h2>  
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizontally Centered Responsive YouTube Embed</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    .video-wrapper {
+      display: inline-block;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="video-wrapper">
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/fSWmNVgQ0TA" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
+
+<!-- My Current Gear Section -->
+<section id="gear">
+    <h2>My Current Gear</h2>
+    <div class="gear-container">
+      <!-- Camera Gear -->
+<div class="gear-item">
+    <img src="fujifilm-xt3.png" alt="Fujifilm XT3 Camera" class="gear-image">
+    <div class="gear-text">
+        <h3>Fujifilm XT3</h3>
+        <p>The Fujifilm XT3 is my go-to mirrorless camera for capturing high-quality images and videos. It offers fantastic color science and incredible performance in both stills and video.</p>
+    </div>
+</div>
+
+<style>
+    /* Gear Item Styling */
+    .gear-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        height: 100%;
+    }
+
+    .gear-item img {
+        width: 80%; /* Adjust size of the image */
+        height: auto;
+        border-radius: 10px;
+        position: relative;
+        top: 30px; /* Adjust this value to move the image lower without affecting the container */
+    }
+
+    .gear-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin-top: auto;
+    }
+
+    .gear-item h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .gear-item p {
+        font-size: 18px;
+        line-height: 1.5;
+        color: #ddd;
+    }
+</style>
+
+        
+        <!-- Drone Gear -->
+        <div class="gear-item">
+            <img src="dji-mini-2.png" alt="DJI Mini 2 Drone" class="gear-image">
+            <h3>DJI Mini 2</h3>
+            <p>The DJI Mini 2 is my compact drone for stunning aerial footage. It provides excellent stability and 4K video capabilities, making it the perfect travel drone for my projects.</p>
+        </div>
+        
+        <!-- Lens Gear -->
+        <div class="gear-item">
+            <img src="18-55mm-lens.png" alt="18-55mm f/2.8 Kit Lens" class="gear-image">
+            <h3>18-55mm f/2.8 Kit Lens</h3>
+            <p>This lens is versatile and great for both wide-angle and portrait shots. It offers a solid balance of quality and portability, perfect for capturing dynamic shots on the go.</p>
+        </div>
+    </div>
+</section>
+<section id="gear">
+    <h2>My Latest projects</h2>  
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizontally Centered Responsive YouTube Embed</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    .video-wrapper {
+      display: inline-block;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="video-wrapper">
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/fSWmNVgQ0TA" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+ 
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Horizontally Centered Responsive YouTube Embed</title>
+      <style>
+        body {
+          margin: 0;
+          padding: 20px;
+          background-color: #f4f4f4;
+          text-align: center;
+        }
+    
+        .video-wrapper {
+          display: inline-block;
+          width: 100%;
+          max-width: 800px;
+        }
+    
+        .video-container {
+          position: relative;
+          width: 100%;
+          padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+          height: 0;
+          overflow: hidden;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+          border-radius: 10px;
+          background: #000;
+        }
+    
+        .video-container iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: 0;
+        }
+      </style>
+    </head>
+    <body>
+    
+      <div class="video-wrapper">
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/fSWmNVgQ0TA" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Horizontally Centered Responsive YouTube Embed</title>
+          <style>
+            body {
+              margin: 0;
+              padding: 20px;
+              background-color: #f4f4f4;
+              text-align: center;
+            }
+        
+            .video-wrapper {
+              display: inline-block;
+              width: 100%;
+              max-width: 800px;
+            }
+        
+            .video-container {
+              position: relative;
+              width: 100%;
+              padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+              height: 0;
+              overflow: hidden;
+              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+              border-radius: 10px;
+              background: #000;
+            }
+        
+            .video-container iframe {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border: 0;
+            }
+          </style>
+        </head>
+        <body>
+        
+          <div class="video-wrapper">
+            <div class="video-container">
+              <iframe 
+                src="https://www.youtube.com/embed/fSWmNVgQ0TA" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+
