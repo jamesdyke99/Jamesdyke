@@ -45,7 +45,7 @@
         section {             
     margin-bottom: 60px;             
     padding: 20px;             
-    background: linear-gradient(to bottom, rgb(37, 37, 37), black); /* Navy to Black Gradient */             
+    background: linear-gradient(to bottom, rgb(37, 37, 37), rgba(35, 36, 37, 0)); /* Navy to Black Gradient */             
     border-radius: 10px;             
     box-shadow: 0 0 15px rgba(14, 12, 6, 0.055);             
     opacity: 0;             
@@ -98,26 +98,49 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
         }
 
-        /* Latest Photos Section */
-        .photo-grid img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-            transition: transform 0.3s ease-in-out;
-            cursor: pointer;
-        }
+/* Latest Photos Section */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px; /* Ensures a consistent gap between images */
+    grid-auto-flow: dense;
+    align-items: end; /* Aligns all images at the bottom */
+}
 
-        .photo-grid img:hover {
-            transform: scale(1.05);
-        }
+/* Style for all images */
+.photo-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
 
-        .photo-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-        }
+/* Hover effect */
+.photo-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* Large vertical photos */
+.photo-grid img.vertical {
+    grid-row: span 2;
+}
+
+/* Large horizontal photos */
+.photo-grid img.horizontal {
+    grid-column: span 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .photo-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+}
+
+
+
 
         /* Contact Section */
         #contact-me button {
