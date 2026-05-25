@@ -1,478 +1,1001 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>James Dyke Media Portfolio</title>
-    <style>
-        /* Global Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #121212;
-            color: #e0e0e0;
-            line-height: 1.6;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>James Dyke Media Portfolio</title>
 
-        header {
-            background: url('background.png') no-repeat center center fixed;
-            background-size: cover;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-            animation: fadeIn 2s ease-in-out;
-        }
+<style>
 
-        header h1 {
-            font-size: 3em;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 0;
-            animation: slideDown 1.5s ease-in-out;
-        }
+/* =========================
+GLOBAL
+========================= */
 
-        main {
-            padding: 20px;
-        }
-
-        section {             
-    margin-bottom: 60px;             
-    padding: 20px;             
-    background: linear-gradient(to bottom, rgb(37, 37, 37), rgba(35, 36, 37, 0)); /* Navy to Black Gradient */             
-    border-radius: 10px;             
-    box-shadow: 0 0 15px rgba(14, 12, 6, 0.055);             
-    opacity: 0;             
-    transform: translateY(20px);             
-    animation: fadeUp 1s ease-in-out forwards;         
-}
-
-
-        section:nth-child(even) {
-            animation-delay: 0.3s;
-        }
-
-        h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #fff;
-        }
-
-        p {
-            font-size: 1.1em;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 20px;
-        }
-
-        /* Testimonials Section */
-        .testimonial {
-            background-color: rgba(30, 30, 30, 0.8);
-            padding: 15px;
-            border-radius: 5px;
-            margin: 10px auto;
-            max-width: 800px;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Video Sections */
-        .video-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .video-container iframe {
-            width: 100%;
-            max-width: 560px;
-            height: 315px;
-            border-radius: 5px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
-        }
-
-/* Latest Photos Section */
-.photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px; /* Ensures a consistent gap between images */
-    grid-auto-flow: dense;
-    align-items: end; /* Aligns all images at the bottom */
-}
-
-/* Style for all images */
-.photo-grid img {
-    width: 100%;
+*{
+.profile-photo {
+    max-width: 100%;
     height: auto;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-    transition: transform 0.3s ease-in-out;
-    cursor: pointer;
+    display: block;
+}
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* Hover effect */
-.photo-grid img:hover {
-    transform: scale(1.05);
+html{
+    scroll-behavior:smooth;
 }
 
-/* Large vertical photos */
-.photo-grid img.vertical {
-    grid-row: span 2;
+body{
+    font-family:Arial,sans-serif;
+    background:#050507;
+    color:#e0e0e0;
+    line-height:1.6;
+    overflow-x:hidden;
+    position:relative;
 }
 
-/* Large horizontal photos */
-.photo-grid img.horizontal {
-    grid-column: span 2;
+/* =========================
+LIQUID GLASS BACKGROUND
+========================= */
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:-20%;
+
+    background:
+    radial-gradient(circle at 20% 20%,
+    rgba(92,148,255,0.22),
+    transparent 25%),
+
+    radial-gradient(circle at 80% 30%,
+    rgba(255,170,95,0.18),
+    transparent 28%),
+
+    radial-gradient(circle at 50% 80%,
+    rgba(111,220,180,0.12),
+    transparent 30%),
+
+    radial-gradient(circle at 30% 70%,
+    rgba(255,255,255,0.05),
+    transparent 35%);
+
+    animation:liquidMove 20s ease-in-out infinite alternate;
+
+    z-index:-3;
+
+    filter:blur(65px) saturate(120%);
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    .photo-grid {
-        grid-template-columns: 1fr; /* Single column on small screens */
+body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+    backdrop-filter:blur(100px);
+    z-index:-2;
+}
+
+/* subtle film grain */
+
+.grain{
+    position:fixed;
+    inset:0;
+    opacity:0.04;
+    pointer-events:none;
+    z-index:-1;
+    background-image:url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+}
+
+/* =========================
+HEADER
+========================= */
+
+header{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+.parallax-bg{
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.45),
+    rgba(0,0,0,0.75)),
+    url('background.png') center/cover no-repeat;
+
+    transform:scale(1.1);
+
+    will-change:transform;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    padding:20px;
+    animation:fadeUp 1.2s ease;
+}
+
+header h1{
+    font-size:clamp(3rem,8vw,6rem);
+    text-transform:uppercase;
+    letter-spacing:4px;
+    color:white;
+    margin-bottom:20px;
+}
+
+.hero-subtitle{
+    max-width:700px;
+    margin:auto;
+    color:#d5d5d5;
+    font-size:1.1rem;
+}
+
+/* =========================
+MAIN
+========================= */
+
+main{
+    width:min(1200px,92%);
+    margin:auto;
+    padding:60px 0;
+}
+
+section{
+    margin-bottom:60px;
+    padding:40px 28px;
+
+    background:rgba(255,255,255,0.04);
+
+    border-radius:28px;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.35),
+    inset 0 1px 1px rgba(255,255,255,0.08);
+
+    position:relative;
+    overflow:hidden;
+}
+
+section::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        120deg,
+        rgba(255,255,255,0.08),
+        transparent 30%
+    );
+
+    pointer-events:none;
+}
+
+section:hover{
+    transform:translateY(-3px);
+    transition:0.4s ease;
+}
+
+h2{
+    font-size:2.3rem;
+    text-align:center;
+    margin-bottom:25px;
+    color:white;
+}
+
+p{
+    font-size:1.05rem;
+    text-align:center;
+    max-width:900px;
+    margin:auto;
+}
+
+/* =========================
+ABOUT SECTION
+========================= */
+
+.about-wrapper{
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.profile-photo{
+    width:100%;
+    aspect-ratio:auto;
+    object-fit:cover;
+
+    border-radius:24px;
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    box-shadow:
+    0 20px 35px rgba(0,0,0,0.45);
+
+    transition:0.4s ease;
+}
+
+.profile-photo:hover{
+    transform:scale(1.03) rotate(-1deg);
+}
+
+/* =========================
+TESTIMONIALS
+========================= */
+
+.testimonial{
+    background:rgba(255,255,255,0.05);
+
+    padding:20px;
+
+    border-radius:18px;
+
+    margin:20px auto;
+
+    max-width:900px;
+
+    border:1px solid rgba(255,255,255,0.06);
+}
+
+/* =========================
+VIDEOS
+========================= */
+
+.video-container{
+    width:100%;
+    margin-bottom:20px;
+}
+
+.video-wrapper{
+    position:relative;
+    width:100%;
+    padding-top:56.25%;
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    box-shadow:
+    0 15px 30px rgba(0,0,0,0.45);
+}
+
+.video-wrapper iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:none;
+}
+
+.text-box{
+    max-width:900px;
+    margin:25px auto 0;
+    text-align:center;
+    font-size:1.05rem;
+    color:#d7d7d7;
+}
+
+/* =========================
+PHOTO GRID
+========================= */
+
+.photo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:28px;
+}
+
+.photo-item{
+    opacity:0;
+    transform:translateY(50px) scale(0.95);
+
+    transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.photo-item.visible{
+    opacity:1;
+    transform:translateY(0) scale(1);
+}
+
+.photo-grid img{
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+
+    border-radius:28px;
+
+    box-shadow:
+    0 20px 35px rgba(0,0,0,0.45);
+
+    transition:0.5s ease;
+}
+
+.photo-grid img:hover{
+    transform:scale(1.03);
+    filter:brightness(1.05);
+}
+
+/* =========================
+BUTTONS
+========================= */
+
+.more-button-wrapper{
+    text-align:center;
+    margin-top:40px;
+
+    opacity:0;
+    transform:translateY(30px);
+
+    transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.more-button-wrapper.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.glass-button{
+    background:
+    linear-gradient(
+        135deg,
+        rgba(0,123,255,0.9),
+        rgba(132,0,255,0.9)
+    );
+
+    color:white;
+
+    padding:15px 32px;
+
+    font-size:1rem;
+
+    border:none;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(10px);
+
+    transition:0.4s ease;
+}
+
+.glass-button:hover{
+    transform:translateY(-4px) scale(1.03);
+
+    box-shadow:
+    0 15px 30px rgba(0,123,255,0.35);
+}
+
+/* =========================
+LIGHTBOX
+========================= */
+
+.lightbox{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,0.94);
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+
+    padding:20px;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(10px);
+}
+
+.lightbox img{
+    max-width:100%;
+    max-height:90vh;
+
+    border-radius:24px;
+
+    box-shadow:
+    0 25px 50px rgba(0,0,0,0.5);
+
+    animation:fadeUp 0.4s ease;
+}
+
+.lightbox:target{
+    display:flex;
+}
+
+/* close icon */
+
+.lightbox::after{
+    content:'✕';
+
+    position:absolute;
+
+    top:25px;
+    right:30px;
+
+    font-size:2rem;
+
+    color:white;
+
+    opacity:0.8;
+
+    transition:0.3s ease;
+}
+
+.lightbox:hover::after{
+    opacity:1;
+    transform:scale(1.1);
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#888;
+}
+
+/* =========================
+ANIMATIONS
+========================= */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 }
 
+@keyframes liquidMove{
 
+    0%{
+        transform:translate(0,0) scale(1);
+    }
 
+    50%{
+        transform:translate(-5%,3%) scale(1.06);
+    }
 
-        /* Contact Section */
-        #contact-me button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 1.1em;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            display: block;
-            margin: 0 auto;
-            transition: background-color 0.3s ease;
-        }
+    100%{
+        transform:translate(5%,-3%) scale(1.08);
+    }
+}
 
-        #contact-me button:hover {
-            background-color: #0056b3;
-            text-decoration: underline;
-        }
+/* =========================
+MOBILE
+========================= */
 
-        /* Lightbox Modal */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.5s ease-in-out;
-        }
+@media(max-width:900px){
 
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            margin: auto;
-            border-radius: 10px;
-        }
+    .about-wrapper{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
 
-        .lightbox:target {
-            display: flex;
-        }
+    .profile-photo{
+        max-width:260px;
+        margin:auto;
+    }
 
-        /* Parallax Effect */
-        .parallax {
-            background: url('background.png') no-repeat center center fixed;
-            background-size: cover;
-            height: 400px;
-            margin: 60px 0;
-            animation: fadeIn 2s ease-in-out;
-        }
+    section{
+        padding:28px 20px;
+    }
 
-        /* Responsive Design */
-        @media (min-width: 768px) {
-            .photo-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
+    .photo-grid{
+        grid-template-columns:1fr;
+    }
 
-        @media (min-width: 1200px) {
-            .photo-grid {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
+    h2{
+        font-size:2rem;
+    }
+}
 
-            header h1 {
-                font-size: 4em;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-20px);
-            }
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .text-box {
-    max-width: 600px;
-    word-wrap: break-word;
-    text-align: center;
-    margin: 0 auto;
-    font-size: 18px; /* Adjust this value as needed */
-  }
-            
-        
-    </style>
+</style>
 </head>
+
 <body>
-    <!-- Header Section -->
-    <header>
+
+<div class="grain"></div>
+
+<!-- =========================
+HEADER
+========================= -->
+
+<header>
+
+    <div class="parallax-bg"></div>
+
+    <div class="hero-content">
+
         <h1>James Dyke Media</h1>
-    </header>
 
-    <main>
-        <!-- About Me Section -->
-        <section id="about-me">
-            <h2>About Me</h2>
-            <p>My name is James, I make cinematic short films of different locations and use my editing skills I have learned over the years to create impactful videos. I have over 5 years of experience editing videos and films. I also enjoy Metalworking and Woodworking alongside my filmmaking. Combining creativity with technical skills allows me to produce unique content that tells compelling visual stories.I am always looking for ways to improve and people to collab with. If you are interested you can find out how to contact me at the bottom of the page.</p>
-        </section>
-        
+        <p class="hero-subtitle">
+            Cinematic filmmaking, photography, storytelling and visual creativity.
+        </p>
 
-        
+    </div>
 
-        <!-- Testimonials Section -->
-        <section id="testimonials">
-            <h2>Quotes from People I've Worked With</h2>
-            <div class="testimonial">
-                <p>I’ve known James since he began making films at age 11. 
-					I have loved how he has honed such a strong craft at a young age by exploring his directors voice in a playful way over the years. 
-					I am so excited by his potential. Definitely a young filmmaker to watch or more importantly to have on your team" – Julia Black, BAFTA and Grierson nominated documentary director</p>
-            </div>
-            <div class="testimonial">
-                <p>"I've enjoyed working with James. I can see where we can both work to our strengths and have a good working relationship.
+</header>
 
-					I intend to involve James in the quick 'first edit' of my future videos. We have had success with this. I find his editing style to be 'fresh' without being too much for a corporate audience.
-					" – Feedback provided by Sy Joshua: Director of Race in the Workplace Pro </p>
-            </div>
-            <div class="testimonial">
-                <p></p>
-            </div>
-        </section>
- 
-       <!-- Latest Film Section -->
-        <section id="latest-film">
-            <h2>My latest Project</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/c5UKN-Uh2tE" frameborder="0" allowfullscreen></iframe>
-               
-            </div>
-            <h2 class="text-box">
-                I have had the privalige of being lead editor and cinematographer on a large scale documentary "BioVerseTV Unplugging from Social Media". Directed By Jose-Maria Kimburi and Oliver Norris this project aims to help people disconnect with technology and reconnect with nature and green spaces.
-              </h2>
-        </section>
-           </section>
-   <!-- Latest Film Section -->
-        <section id="latest-film">
-            <h2>My Favourite Short Film</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/fSWmNVgQ0TA" frameborder="0" allowfullscreen></iframe>
-               
-            </div>
-            <h2 class="text-box">
-                Showing the beauty of knife making, this film was shot on My Fujifilm Xt3 with the 18-55mm kit lens, drone shots were done with the DJI Mini 2
-              </h2>
-        </section>       
+<main>
 
-        <!-- Latest Film Section -->
-        <section id="latest-film">
-            <h2>A Trip To The Lake District</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/zQes1QZnyYk" frameborder="0" allowfullscreen></iframe>
-               
-            </div>
-            <h2 class="text-box">
-                Relax as I take you through the stunning scenery that Cumbria has to offer. From staggering views attop Blencathra, to lush and vast lakes throughout Keswick
-              </h2>
- 
-    
+<!-- =========================
+ABOUT
+========================= -->
 
-        <!-- Latest Projects Section -->
-        <section id="latest-projects">
-            <h2>Past Projects</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/zl5QkJ1tcIo" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <h2 class="text-box">
-                Shot in the south of France from the stunning bays of Agay to the crowded streets of saint tropez using a mix of my Fuji XT3 and my DJI Mini 2
-              </h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/leGD7leoVZg" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <h2 class="text-box">
-                Filmed in Chipping Norton during the height of the rapeseed season using my DJI Mini 2
-              </h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/wTLT-_4oI8k" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <h2 class="text-box">
-                Filmed once again with my trusty DJI Mini 2, we see the stunning marshlands of Thursley common while showcasing my colour grading
-              </h2>
-            
-        </section>
+<section id="about-me">
 
-        
+    <h2>About Me</h2>
 
-        <!-- Latest Photos Section -->
-        <section id="latest-photos">
-            <h2>My Latest Photos</h2>
-            <div class="photo-grid">
-                <a href="#lightbox1">
-                    <img src="photo1.jpg" alt="Photo 1" />
-                </a>
-                <a href="#lightbox2">
-                    <img src="photo2.jpg" alt="Photo 2" />
-                </a>
-                <a href="#lightbox3">
-                    <img src="photo3.jpg" alt="Photo 3" />
-                </a>
-                <a href="#lightbox4">
-                    <img src="photo4.jpg" alt="Photo 4" />
-                </a>
-                <a href="#lightbox5">
-                    <img src="photo5.jpg" alt="Photo 5" />
-                </a>
-                <a href="#lightbox6">
-                    <img src="photo6.jpg" alt="Photo 6" />
-                </a>
-            </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="more-photos.html">
-                    <button style="
-                        background-color: #2b2b2b;
-                        color: #fff;
-                        padding: 10px 20px;
-                        font-size: 1.1em;
-                        border: none;
-                        border-radius: 5px;
-                        cursor: pointer;
-                        transition: background-color 0.3s ease;
-                    ">See More Photos</button>
-                </a>
-            </div>
-            
-        </section>
+    <div class="about-wrapper">
 
+        <img src="profilepic.jpg"
+             alt="James Dyke"
+             class="profile-photo">
 
-        
+        <div>
 
-        <!-- Blender and 3D Modeling Section -->
-        <section id="blender">
-            <h2>Blender and 3D Modeling Projects</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/w_8risEbGCA" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/XQ8hTK7f5ko" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/yVXqHosyloU" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
+            <p>
+                My name is James, I make cinematic short films of different locations and use my editing skills I have learned over the years to create impactful videos. I have over 5 years of experience editing videos and films. I also enjoy Metalworking and Woodworking alongside my filmmaking. Combining creativity with technical skills allows me to produce unique content that tells compelling visual stories.I am always looking for ways to improve and people to collab with. If you are interested you can find out how to contact me at the bottom of the page.
+            </p>
 
-        
-
-        <!-- Blacksmithing Section -->
-        <section id="blacksmithing">
-            <h2>Blacksmithing projects</h2>
-            <div class="photo-grid">
-                <a href="#lightbox7">
-                    <img src="blacksmithing1.jpg" alt="Blacksmithing 1" />
-                </a>
-                <a href="#lightbox8">
-                    <img src="blacksmithing2.jpg" alt="Blacksmithing 2" />
-                </a>
-                <a href="#lightbox9">
-                    <img src="blacksmithing3.jpg" alt="Blacksmithing 3" />
-                </a>
-                <a href="#lightbox10">
-                    <img src="blacksmithing4.jpg" alt="Blacksmithing 4" />
-                </a>
-                <a href="#lightbox11">
-                    <img src="blacksmithing5.jpg" alt="Blacksmithing 5" />
-                </a>
-                <a href="#lightbox12">
-                    <img src="blacksmithing6.jpg" alt="Blacksmithing 6" />
-                </a>
-            </div>
-        </section>
-
-        <!-- Lightbox Modal for Blacksmithing -->
-        <div id="lightbox7" class="lightbox">
-            <img src="blacksmithing1.jpg" alt="Full-screen Blacksmithing 1" />
-        </div>
-        <div id="lightbox8" class="lightbox">
-            <img src="blacksmithing2.jpg" alt="Full-screen Blacksmithing 2" />
-        </div>
-        <div id="lightbox9" class="lightbox">
-            <img src="blacksmithing3.jpg" alt="Full-screen Blacksmithing 3" />
-        </div>
-        <div id="lightbox10" class="lightbox">
-            <img src="blacksmithing4.jpg" alt="Full-screen Blacksmithing 4" />
-        </div>
-        <div id="lightbox11" class="lightbox">
-            <img src="blacksmithing5.jpg" alt="Full-screen Blacksmithing 5" />
-        </div>
-        <div id="lightbox12" class="lightbox">
-            <img src="blacksmithing6.jpg" alt="Full-screen Blacksmithing 6" />
         </div>
 
-        
+    </div>
 
-        <!-- Contact Me Section -->
-        <section id="contact-me">
-            <h2>Contact Me</h2>
-            <button onclick="openGmail()">jamesdyke99@gmail.com</button>
-        </section>
-    </main>
+</section>
 
-    <footer>
-        <p style="text-align: center;">&copy; 2025 James Dyke Media. All rights reserved.</p>
-    </footer>
+<!-- =========================
+TESTIMONIALS
+========================= -->
 
-    <script>
-        function openGmail() {
-            window.location.href = "mailto:jamesdyke99@gmail.com";
+<section id="testimonials">
+
+    <h2>Quotes from People I've Worked With</h2>
+
+    <div class="testimonial">
+
+        <p>
+            I’ve known James since he began making films at age 11.
+            I have loved how he has honed such a strong craft at a young age by exploring his directors voice in a playful way over the years.
+            I am so excited by his potential. Definitely a young filmmaker to watch or more importantly to have on your team" – Julia Black, BAFTA and Grierson nominated documentary director
+        </p>
+
+    </div>
+
+    <div class="testimonial">
+
+        <p>
+            "I've enjoyed working with James. I can see where we can both work to our strengths and have a good working relationship.
+
+            I intend to involve James in the quick 'first edit' of my future videos. We have had success with this. I find his editing style to be 'fresh' without being too much for a corporate audience.
+            " – Feedback provided by Sy Joshua: Director of Race in the Workplace Pro
+        </p>
+
+    </div>
+
+</section>
+
+<!-- =========================
+LATEST PROJECT
+========================= -->
+
+<section>
+
+    <h2>My latest Project</h2>
+
+    <div class="video-container">
+
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/CgLspEUa1a0" allowfullscreen></iframe>
+        </div>
+
+    </div>
+
+    <h2 class="text-box">
+         This project was for my creative media B-Tec where I collabed with 5 other people in a group to create this short film.
+    </h2>
+
+</section>
+
+<!-- =========================
+FAVOURITE FILM
+========================= -->
+
+<section>
+
+    <h2>solo cinematography project</h2>
+
+    <div class="video-container">
+
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/zQes1QZnyYk" allowfullscreen></iframe>
+        </div>
+
+    </div>
+
+    <h2 class="text-box">
+        Relax as I take you through the stunning scenery that Cumbria has to offer. From staggering views attop Blencathra, to lush and vast lakes throughout Keswick
+    </h2>
+
+</section>
+
+<!-- =========================
+LAKE DISTRICT
+========================= -->
+
+<section>
+
+    <h2>Music Video college project</h2>
+
+    <div class="video-container">
+
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/dmGmtgnRkRw" allowfullscreen></iframe>
+        </div>
+
+    </div>
+
+    <h2 class="text-box">
+        A bizzare and unsettling concept music video. All cinematography done by me.
+    </h2>
+
+</section>
+
+<!-- =========================
+PAST PROJECTS
+========================= -->
+
+<section id="latest-projects">
+
+    <h2>Past Projects</h2>
+
+    <div class="video-container">
+
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/zl5QkJ1tcIo" allowfullscreen></iframe>
+        </div>
+
+    </div>
+
+    <h2 class="text-box">
+        Shot in the south of France from the stunning bays of Agay to the crowded streets of saint tropez using a mix of my Fuji XT3 and my DJI Mini 2
+    </h2>
+
+    <div class="video-container">
+
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/leGD7leoVZg" allowfullscreen></iframe>
+        </div>
+
+    </div>
+
+    <h2 class="text-box">
+        Filmed in Chipping Norton during the height of the rapeseed season using my DJI Mini 2
+    </h2>
+
+    <div class="video-container">
+
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/wTLT-_4oI8k" allowfullscreen></iframe>
+        </div>
+
+    </div>
+
+    <h2 class="text-box">
+        Filmed once again with my trusty DJI Mini 2, we see the stunning marshlands of Thursley common while showcasing my colour grading
+    </h2>
+
+</section>
+
+<!-- =========================
+LATEST PHOTOS
+========================= -->
+
+<section id="latest-photos">
+
+    <h2>some of my best wildlife work</h2>
+
+    <div class="photo-grid">
+
+        <a href="#lightbox1" class="photo-item">
+            <img src="photo1.jpg" alt="Photo 1">
+        </a>
+
+        <a href="#lightbox2" class="photo-item">
+            <img src="photo2.jpg" alt="Photo 2">
+        </a>
+
+        <a href="#lightbox3" class="photo-item">
+            <img src="photo3.jpg" alt="Photo 3">
+        </a>
+
+        <a href="#lightbox4" class="photo-item">
+            <img src="photo4.jpg" alt="Photo 4">
+        </a>
+
+        <a href="#lightbox5" class="photo-item">
+            <img src="photo5.jpg" alt="Photo 5">
+        </a>
+
+        <a href="#lightbox6" class="photo-item">
+            <img src="photo6.jpg" alt="Photo 6">
+        </a>
+
+    </div>
+
+    <div class="more-button-wrapper">
+
+        <a href="more-photos.html">
+
+            <button class="glass-button">
+                See More Photos
+            </button>
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- =========================
+BLENDER
+========================= -->
+
+<section id="blender">
+
+    <h2>Blender and 3D Modeling Projects</h2>
+
+    <div class="video-container">
+
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/w_8risEbGCA" allowfullscreen></iframe>
+        </div>
+
+    </div>
+
+    <div class="video-container">
+
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/XQ8hTK7f5ko" allowfullscreen></iframe>
+        </div>
+
+    </div>
+
+    <div class="video-container">
+
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/yVXqHosyloU" allowfullscreen></iframe>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+BLACKSMITHING
+========================= -->
+
+<section id="blacksmithing">
+
+    <h2>Blacksmithing projects</h2>
+
+    <div class="photo-grid">
+
+        <a href="#lightbox7" class="photo-item">
+            <img src="blacksmithing1.jpg">
+        </a>
+
+        <a href="#lightbox8" class="photo-item">
+            <img src="blacksmithing2.jpg">
+        </a>
+
+        <a href="#lightbox9" class="photo-item">
+            <img src="blacksmithing3.jpg">
+        </a>
+
+        <a href="#lightbox10" class="photo-item">
+            <img src="blacksmithing4.jpg">
+        </a>
+
+        <a href="#lightbox11" class="photo-item">
+            <img src="blacksmithing5.jpg">
+        </a>
+
+        <a href="#lightbox12" class="photo-item">
+            <img src="blacksmithing6.jpg">
+        </a>
+
+    </div>
+
+</section>
+
+<!-- =========================
+CONTACT
+========================= -->
+
+<section id="contact-me">
+
+    <h2>Contact Me</h2>
+
+    <div style="text-align:center;">
+
+        <button class="glass-button"
+                onclick="openGmail()">
+            jamesdyke99@gmail.com
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- =========================
+LIGHTBOXES
+========================= -->
+
+<a href="#" id="lightbox1" class="lightbox">
+    <img src="photo1.jpg">
+</a>
+
+<a href="#" id="lightbox2" class="lightbox">
+    <img src="photo2.jpg">
+</a>
+
+<a href="#" id="lightbox3" class="lightbox">
+    <img src="photo3.jpg">
+</a>
+
+<a href="#" id="lightbox4" class="lightbox">
+    <img src="photo4.jpg">
+</a>
+
+<a href="#" id="lightbox5" class="lightbox">
+    <img src="photo5.jpg">
+</a>
+
+<a href="#" id="lightbox6" class="lightbox">
+    <img src="photo6.jpg">
+</a>
+
+<a href="#" id="lightbox7" class="lightbox">
+    <img src="blacksmithing1.jpg">
+</a>
+
+<a href="#" id="lightbox8" class="lightbox">
+    <img src="blacksmithing2.jpg">
+</a>
+
+<a href="#" id="lightbox9" class="lightbox">
+    <img src="blacksmithing3.jpg">
+</a>
+
+<a href="#" id="lightbox10" class="lightbox">
+    <img src="blacksmithing4.jpg">
+</a>
+
+<a href="#" id="lightbox11" class="lightbox">
+    <img src="blacksmithing5.jpg">
+</a>
+
+<a href="#" id="lightbox12" class="lightbox">
+    <img src="blacksmithing6.jpg">
+</a>
+
+<footer>
+    <p>&copy; 2025 James Dyke Media. All rights reserved.</p>
+</footer>
+
+<script>
+
+/* =========================
+MAIL BUTTON
+========================= */
+
+function openGmail(){
+
+    window.location.href =
+    "mailto:jamesdyke99@gmail.com";
+}
+
+/* =========================
+PARALLAX
+========================= */
+
+window.addEventListener('scroll', () => {
+
+    const bg =
+    document.querySelector('.parallax-bg');
+
+    let scroll =
+    window.pageYOffset;
+
+    bg.style.transform =
+    `translateY(${scroll * 0.45}px) scale(1.1)`;
+
+});
+
+/* =========================
+PHOTO REVEAL
+========================= */
+
+const photoItems =
+document.querySelectorAll('.photo-item');
+
+const button =
+document.querySelector('.more-button-wrapper');
+
+const observer =
+new IntersectionObserver((entries) => {
+
+    entries.forEach((entry,index) => {
+
+        if(entry.isIntersecting){
+
+            setTimeout(() => {
+
+                entry.target.classList.add('visible');
+
+                if(entry.target === photoItems[photoItems.length - 1]){
+
+                    setTimeout(() => {
+
+                        button.classList.add('visible');
+
+                    }, 700);
+
+                }
+
+            }, index * 180);
+
         }
-    </script>
+
+    });
+
+},{
+    threshold:0.2
+});
+
+photoItems.forEach(item => {
+
+    observer.observe(item);
+
+});
+
+
+</script>
+
 </body>
 </html>
 
